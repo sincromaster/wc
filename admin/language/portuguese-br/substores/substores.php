@@ -4,8 +4,15 @@
 $_['heading_title']                 = 'Sub-lojas';
 
 // Text
-$_['text_advanced_settings']        = 'Configurações avançadas';
-//$_['text_success']                 = 'Configurações modificadas com sucesso!';
+$_['text_substore_edit']            = 'Editar';
+$_['text_substore_category']        = 'Categoria';
+$_['text_substore_product']         = 'Produto';
+$_['text_substore_discount']        = 'Desconto';
+$_['text_substore_customer_group']  = 'Grupo de Clientes';
+$_['text_substore_actions']         = 'Ações';
+$_['text_substore_save']            = 'Salvar';
+$_['text_substore_cancel']          = 'Cancelar';
+$_['text_substore_success']         = 'Configurações modificadas com sucesso!';
 //$_['text_items']                   = 'Itens';
 //$_['text_tax']                     = 'Taxas';
 //$_['text_account']                 = 'Conta';
