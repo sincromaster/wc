@@ -30,12 +30,15 @@
 
             <h1><img src="view/image/setting.png" alt="" /> <?php echo $heading_title; ?></h1>
 
-            <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $text_substore_save; ?></a><a href="<?php echo $button_substore_cancel; ?>" class="button"><?php echo $text_substore_cancel; ?></a></div>
+            <div class="buttons"><a onclick="$('#form-descontos').submit();" class="button"><?php echo $text_substore_save; ?></a><a href="<?php echo $button_substore_cancel; ?>" class="button"><?php echo $text_substore_cancel; ?></a></div>
 
         </div>
 
         <div class="content">
-            <form action="<?php echo $form['action']; ?>" method="post" enctype="multipart/form-data" id="form">
+            
+            <div id="tabs" class="htabs"><a href="#form-descontos"><?php echo $tab_descontos; ?></a><a href="#form-cupom"><?php echo $tab_cupom; ?></a><a href="#tab-comissao"><?php echo $tab_comissao; ?></a></div>
+            
+            <form action="<?php echo $form['action']; ?>" method="post" enctype="multipart/form-data" id="form-descontos">
             
                 <input type="hidden" name="store_id" value="<?php echo $form['store_id']?>" />
                 <input type="hidden" name="table" value="<?php echo $form['table']?>" />

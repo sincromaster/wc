@@ -1,14 +1,6 @@
 <?php
 
-class ModelSubstoresSubstores extends Model {
-    
-    public function getSubstores() {
-        
-        $strSQL = 'SELECT * FROM ' . DB_PREFIX . 'store';
-        $objResult = $this->db->query($strSQL);
-        
-        return $objResult->rows;
-    }
+class ModelSubstoresDescontos extends Model {
     
     public function getSubstoreProductsDiscounts($store_id) {
         
@@ -18,5 +10,3 @@ class ModelSubstoresSubstores extends Model {
         return $objResult->rows;
     }
 }
-
-?>
