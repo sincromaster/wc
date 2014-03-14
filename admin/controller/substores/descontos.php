@@ -76,7 +76,13 @@ class ControllerSubstoresDescontos extends Controller {
             $this->data['success'] = '';
         }
         
-        // 
+        // Tabs
+        $this->data['tab_desconto_cupons'] = $this->url->link('substores/descontos/cupom', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
+        $this->data['tab_comissoes'] = $this->url->link('substores/comissoes', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
+        $this->data['text_substore_desconto_produtos'] = $this->language->get('text_substore_desconto_produtos');
+        $this->data['text_substore_desconto_cupom'] = $this->language->get('text_substore_desconto_cupom');
+        $this->data['text_substore_comissoes'] = $this->language->get('text_substore_comissoes');
+        
         // Textos do cabeçalho da tabela
         $this->data['text_substore_category'] = $this->language->get('text_substore_category');
         $this->data['text_substore_product'] = $this->language->get('text_substore_product');

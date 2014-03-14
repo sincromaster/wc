@@ -35,14 +35,18 @@
         </div>
 
         <div class="content">
-            
-            <div id="tabs" class="htabs"><a href="#form-descontos"><?php echo $tab_descontos; ?></a><a href="#form-cupom"><?php echo $tab_cupom; ?></a><a href="#tab-comissao"><?php echo $tab_comissao; ?></a></div>
-            
+
+            <div id="tabs" class="htabs">
+                <a href="javascript:;" class="selected" style="display: inline"><?php echo $text_substore_desconto_produtos; ?></a>
+                <a href="<?php echo $tab_desconto_cupons; ?>" style="display: inline"><?php echo $text_substore_desconto_cupom; ?></a>
+                <a href="<?php echo $tab_comissoes; ?>" style="display: inline"><?php echo $text_substore_comissoes; ?></a>
+            </div>
+
             <form action="<?php echo $form['action']; ?>" method="post" enctype="multipart/form-data" id="form-descontos">
-            
-                <input type="hidden" name="store_id" value="<?php echo $form['store_id']?>" />
-                <input type="hidden" name="table" value="<?php echo $form['table']?>" />
-                
+
+                <input type="hidden" name="store_id" value="<?php echo $form['store_id'] ?>" />
+                <input type="hidden" name="table" value="<?php echo $form['table'] ?>" />
+
                 <table>
                     <thead>
                         <tr>
@@ -54,24 +58,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <?php if(!empty($form_state)) : ?>
 
-                            <?php foreach($form_state as $discount) : ?>
-                        
+                        <?php if (!empty($form_state)) : ?>
+
+                            <?php foreach ($form_state as $discount) : ?>
+
                                 <tr>
                                     <td>
                                         <select name="category_id[]">
                                             <option value="0">Selecione</option>
-                                            <?php foreach($form['categories'] as $arrCategory): ?>
-                                            <option value="<?php echo $arrCategory['category_id']; ?>" <?php echo $discount['category_id'] == $arrCategory['category_id'] ? 'selected' : null; ?>><?php echo $arrCategory['name']; ?></option>
+                                            <?php foreach ($form['categories'] as $arrCategory): ?>
+                                                <option value="<?php echo $arrCategory['category_id']; ?>" <?php echo $discount['category_id'] == $arrCategory['category_id'] ? 'selected' : null; ?>><?php echo $arrCategory['name']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </td>
                                     <td>
                                         <select name="product_id[]">
                                             <option value="0">Selecione</option>
-                                            <?php foreach($form['products'] as $arrProduct): ?>
+                                            <?php foreach ($form['products'] as $arrProduct): ?>
                                                 <option value="<?php echo $arrProduct['product_id']; ?>" <?php echo $discount['product_id'] == $arrProduct['product_id'] ? 'selected' : null; ?>><?php echo $arrProduct['name']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -82,7 +86,7 @@
                                     <td>
                                         <select name="customer_group_id[]">
                                             <option value="0">Selecione</option>
-                                            <?php foreach($form['customers'] as $arrCustomerGroup): ?>
+                                            <?php foreach ($form['customers'] as $arrCustomerGroup): ?>
                                                 <option value="<?php echo $arrCustomerGroup['customer_group_id']; ?>" <?php echo (int) $discount['customer_group_id'] == (int) $arrCustomerGroup['customer_group_id'] ? 'selected' : null; ?>><?php echo $arrCustomerGroup['name']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -92,44 +96,76 @@
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-                        <?php // else: ?>
-                        
-                        <tr>
-                            <td>
-                                <select name="category_id[]">
-                                    <option value="0">Selecione</option>
-                                    <?php foreach($form['categories'] as $arrCategory): ?>
-                                    <option value="<?php echo $arrCategory['category_id']; ?>"><?php echo $arrCategory['name']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </td>
-                            <td>
-                                <select name="product_id[]">
-                                    <option value="0">Selecione</option>
-                                    <?php foreach($form['products'] as $arrProduct): ?>
-                                        <option value="<?php echo $arrProduct['product_id']; ?>"><?php echo $arrProduct['name']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text" name="discount[]" maxlength="5" size="2" />
-                            </td>
-                            <td>
-                                <select name="customer_group_id[]">
-                                    <option value="0">Selecione</option>
-                                    <?php foreach($form['customers'] as $arrCustomerGroup): ?>
-                                        <option value="<?php echo $arrCustomerGroup['customer_group_id']; ?>"><?php echo $arrCustomerGroup['name']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </td>
-                            <td>
-                                <a href="#"><img src="view/image/delete.png" alt="Excluir" title="Excluir" /></a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <select name="category_id[]">
+                                        <option value="0">Selecione</option>
+                                        <?php foreach ($form['categories'] as $arrCategory): ?>
+                                            <option value="<?php echo $arrCategory['category_id']; ?>"><?php echo $arrCategory['name']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="product_id[]">
+                                        <option value="0">Selecione</option>
+                                        <?php foreach ($form['products'] as $arrProduct): ?>
+                                            <option value="<?php echo $arrProduct['product_id']; ?>"><?php echo $arrProduct['name']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="discount[]" maxlength="5" size="2" />
+                                </td>
+                                <td>
+                                    <select name="customer_group_id[]">
+                                        <option value="0">Selecione</option>
+                                        <?php foreach ($form['customers'] as $arrCustomerGroup): ?>
+                                            <option value="<?php echo $arrCustomerGroup['customer_group_id']; ?>"><?php echo $arrCustomerGroup['name']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <a href="#"><img src="view/image/delete.png" alt="Excluir" title="Excluir" /></a>
+                                </td>
+                            </tr>
+
+                        <?php else: ?>
+                            <tr>
+                                <td>
+                                    <select name="category_id[]">
+                                        <option value="0">Selecione</option>
+                                        <?php foreach ($form['categories'] as $arrCategory): ?>
+                                            <option value="<?php echo $arrCategory['category_id']; ?>"><?php echo $arrCategory['name']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="product_id[]">
+                                        <option value="0">Selecione</option>
+                                        <?php foreach ($form['products'] as $arrProduct): ?>
+                                            <option value="<?php echo $arrProduct['product_id']; ?>"><?php echo $arrProduct['name']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="discount[]" maxlength="5" size="2" />
+                                </td>
+                                <td>
+                                    <select name="customer_group_id[]">
+                                        <option value="0">Selecione</option>
+                                        <?php foreach ($form['customers'] as $arrCustomerGroup): ?>
+                                            <option value="<?php echo $arrCustomerGroup['customer_group_id']; ?>"><?php echo $arrCustomerGroup['name']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <a href="#"><img src="view/image/delete.png" alt="Excluir" title="Excluir" /></a>
+                                </td>
+                            </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
-                
+
             </form>
             <?php
 //            echo '<pre>';
