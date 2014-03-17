@@ -103,6 +103,12 @@ class ControllerSubstoresDescontos extends Controller {
         $this->load->model('catalog/product');
         $this->data['form']['products'] = $this->model_catalog_product->getProducts();
         
+        foreach($this->data['form']['products'] as $intKey => $arrProduct) {
+            
+            $objCategory = $this->db->query('SELECT * FROM ' . DB_PREFIX . 'product_to_category WHERE product_id = ' . $arrProduct['product_id']);
+            $this->data['form']['products'][$intKey]['category_id'] = $objCategory->num_rows > 0 ? $objCategory->row['category_id'] : 0;
+        }
+        
         $this->load->model('sale/customer_group');
         $this->data['form']['customers'] = $this->model_sale_customer_group->getCustomerGroups();
         
