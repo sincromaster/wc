@@ -188,6 +188,26 @@ class ControllerSubstoresDescontos extends Controller {
                     $this->session->data['success'] = $this->language->get('text_substore_success');
                 }
                 break;
+                
+             case 'store_comissao_revenda':
+               
+      
+                // Remove os registros da tabela para inseri-los novamente
+                $this->db->query('DELETE FROM ' . DB_PREFIX . 'store_comissao_revenda WHERE store_id = ' . $arrPost['store_id']);
+                
+                foreach($arrPost['revenda_id'] as $key => $val) {
+
+                   if($val != '0' || $val != '' ) {
+                     $strSQL = 'INSERT INTO ' . DB_PREFIX . $arrPost['table'] . ' (revenda_id, comissao, store_id)';
+                     $strSQL .= ' VALUES(' . (int)$val. ', ' . (int)$arrPost['comissao'][$key]. ', ' . $arrPost['store_id'] . ')';
+                     $this->db->query($strSQL);
+
+                   }
+                }
+                // Retorna a mensagem
+                $this->session->data['success'] = $this->language->get('text_substore_success');
+               
+                break;
         }
         
         // Redireciona para a lista de sublojas
