@@ -53,6 +53,9 @@ if (isset($_SERVER['HTTPS']) && (($_SERVER['HTTPS'] == 'on') || ($_SERVER['HTTPS
 
 if ($store_query->num_rows) {
 	$config->set('config_store_id', $store_query->row['store_id']);
+        // Retorna as informacoes do cupom cadastrado na subloja
+        $coupon_store = $db->query("SELECT code FROM " . DB_PREFIX . "store_coupons st LEFT JOIN " . DB_PREFIX . "coupon c ON c.coupon_id = st.coupon_id WHERE st.store_id = ". $store_query->row['store_id']);
+        
 } else {
 	$config->set('config_store_id', 0);
 }
@@ -173,6 +176,11 @@ if (isset($session->data['language']) && array_key_exists($session->data['langua
 
 if (!isset($session->data['language']) || $session->data['language'] != $code) {
 	$session->data['language'] = $code;
+}
+
+// Adiciona o cupom na subloja
+if (isset($coupon_store)) {
+    $session->data['coupon'] = $coupon_store->row['code'];;
 }
 
 if (!isset($request->cookie['language']) || $request->cookie['language'] != $code) {	  

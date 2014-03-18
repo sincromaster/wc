@@ -9,4 +9,11 @@ class ModelSubstoresDescontos extends Model {
         
         return $objResult->rows;
     }
+    public function getSubstoreCouponsDiscounts($store_id) {
+        
+        $strSQL = 'SELECT * FROM ' . DB_PREFIX . 'store_coupons WHERE store_id = ' . $store_id;
+        $objResult = $this->db->query($strSQL);
+        
+        return current($objResult->rows);
+    }
 }
