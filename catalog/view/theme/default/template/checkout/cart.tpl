@@ -229,7 +229,7 @@ function numeros(ie, ff) {
   <div class="content">
     <p><?php echo $text_next_choice; ?></p>
     <table class="radio">
-      <?php if ($coupon_status) { ?>
+      <?php if ($coupon_status && $totals[0]['code'] != 'coupon') { ?>
       <tr class="highlight">
         <td><?php if ($next == 'coupon') { ?>
           <input type="radio" name="next" value="coupon" id="use_coupon" checked="checked" />

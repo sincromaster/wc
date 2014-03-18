@@ -60,6 +60,21 @@ class ControllerSubstoresSubstore extends Controller {
         COMMENT="Relacionamento entre as sublojas e os produtos"';
         
         $this->db->query($strSubstoresCuponsInstall);
+        
+        // Criacao da tabela para vinculo de sublojas/cupons
+        $strSubstoresCuponsDescontoInstall =
+        'CREATE TABLE ' . DB_PREFIX . 'store_coupons (
+            store_id INT NULL,
+            coupon_id INT NULL,
+            created INT NULL,
+            PRIMARY KEY (
+                store_id,
+                coupon_id
+            )
+        )
+        COMMENT="Relacionamento entre as sublojas e os cupons de desconto"';
+        
+        $this->db->query($strSubstoresCuponsDescontoInstall);
     }
     
     /**
@@ -72,6 +87,7 @@ class ControllerSubstoresSubstore extends Controller {
     public function uninstall() {
         
         $this->db->query('DROP TABLE ' . DB_PREFIX . 'store_products_discount');
+        $this->db->query('DROP TABLE ' . DB_PREFIX . 'store_coupons');
     }
     
     /**
