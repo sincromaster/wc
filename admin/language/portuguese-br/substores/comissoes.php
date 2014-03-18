@@ -29,11 +29,13 @@ $_['text_substore_comissoes']           = 'Comissões';
 //$_['text_payment']                 = 'Endereço de Pagamento';
 //
 // Column
-$_['column_substore_name']          = 'Nome revenda';
+$_['column_substore_revenda_name']          = 'Revenda';
 $_['column_revenda_comisso']        = 'Comissão';
 $_['column_revenda_id']             = 'Revendedores ID';
 $_['column_substore_url']           = 'URL da sub-loja';
 $_['column_substore_action']        = 'Ações';
+$_['text_substore_save']            = 'Salvar';
+$_['text_substore_cancel']        = 'Cancelar';
 //
 //// Entry
 //$_['entry_url']                    = 'URL da Loja:<br /><span class="help">URL completa para a sua loja. Certifique-se de adicionar \'/\' no final. Exemplo: "http://www.sualoja.com.br/". Não use os diretórios para criar uma nova loja. Você deve sempre apontar um outro domínio ou subdomínio.</span>';

@@ -1,8 +1,8 @@
 $(document).ready(function(){
     
-    if($('#form-descontos').length > 0) {
+    if($('#form-descontos, #form-comissoes').length > 0) {
 
-        var objTable = $('table', $('#form-descontos'));
+        var objTable = $('table', $('#form-descontos, #form-comissoes'));
         var objTrClone = $('tbody tr', objTable).last().clone();
         var objSelectProductsClone = $('select[name^=product_id', objTable).last().clone();
         
