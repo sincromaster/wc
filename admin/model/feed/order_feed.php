@@ -32,7 +32,7 @@ class ModelFeedOrderFeed extends Model {
 		
 		$orders = $this->getOrdersFiltered($data);
 		
-		foreach ($orders as $key => $ord) {
+		foreach ($orders as $ord) {
 			$order = $this->model_sale_order->getOrder($ord['order_id']);
 			$products = $this->model_sale_order->getOrderProducts($order['order_id']);
 			$totals = $this->model_sale_order->getOrderTotals($order['order_id']);	
@@ -43,17 +43,8 @@ class ModelFeedOrderFeed extends Model {
 				}
 			}
 			
-                        $this->load->model('substores/descontos');
-//                        $arrProduct = $this->model_substores_descontos->getSubstoreProductsDiscounts();
 			
-			foreach ($products as $key => $product) {
-                            
-                                echo '<pre>';
-                                print_r($product);
-                                exit;
-//                                $this->model_substores_descontos->getSubstoresCategoryProduct($product['product_id']);
-//                                $products[$key]['desconto'] = $this->model_substores_descontos->getSubstoresProduct();
-                            
+			foreach ($products as $product) {
 				$options = $this->model_sale_order->getOrderOptions($order['order_id'], $product['order_product_id']);
 				$option = array('OptionName'=>'', 'OptionValue'=>'');
 
