@@ -40,7 +40,7 @@ class ControllerSubstoresSubstore extends Controller {
      */
     public function install() {
         
-        $strSubstoresCuponsInstall = 
+        $strSubstoresDescontosInstall = 
         'CREATE TABLE ' . DB_PREFIX . 'store_products_discount (
             store_id INT NOT NULL,
             category_id INT NOT NULL,
@@ -59,8 +59,20 @@ class ControllerSubstoresSubstore extends Controller {
         
         COMMENT="Relacionamento entre as sublojas e os produtos"';
         
-        $this->db->query($strSubstoresCuponsInstall);
+        $this->db->query($strSubstoresDescontosInstall);
         
+        // Criacao da tabela para vinculo de pedidos/produtos
+        $strSubstoresOrderDescontosInstall = 
+        'CREATE TABLE ' . DB_PREFIX . 'substores_order_product (
+            order_id INT NOT NULL,
+            product_id INT NOT NULL,
+            store_id INT NOT NULL,
+            discount DECIMAL(10,2) NULL,
+            PRIMARY KEY (order_id, product_id, store_id)
+        )
+        COMMENT="Relacionamento entre os pedidos e os produtos"';
+         $this->db->query($strSubstoresOrderDescontosInstall);
+         
         // Criacao da tabela para vinculo de sublojas/cupons
         $strSubstoresCuponsDescontoInstall =
         'CREATE TABLE ' . DB_PREFIX . 'store_coupons (
@@ -78,10 +90,10 @@ class ControllerSubstoresSubstore extends Controller {
 
         // Criacao da tabela para vinculo de sublojas/comissao
         $strSubstoresComissaoInstall =
-        'CREATE TABLE ' . DB_PREFIX . 'store_committee (
+        'CREATE TABLE ' . DB_PREFIX . 'store_sales_commission (
             store_id INT NULL,
             product_id INT NULL,
-            committee DECIMAL(10,2) NOT NULL,
+            sales_commission DECIMAL(10,2) NOT NULL,
             created INT NULL,
             PRIMARY KEY (
                 store_id,
@@ -91,6 +103,24 @@ class ControllerSubstoresSubstore extends Controller {
         COMMENT="Relacionamento entre as sublojas e as comissoes por produto"';
         
         $this->db->query($strSubstoresComissaoInstall);
+        
+        // Criacao da tabela para vinculo de sublojas com as compras/comissoes
+        $strSubstoresSalesComissionInstall =
+        'CREATE TABLE ' . DB_PREFIX . 'store_sales_commission_request (
+            order_id INT NOT NULL,
+            store_id INT NULL,
+            product_id INT NULL,
+            sales_commission INT NOT NULL,
+            sales_created INT NULL,
+            PRIMARY KEY (
+                order_id,
+                store_id,
+                product_id
+            )
+        )
+        COMMENT="Relacionamento entre as sublojas e as comissoes das revendedoras"';
+        
+        $this->db->query($strSubstoresSalesComissionInstall);
         
 //        Permissões
 //        this->model_user_user_group->addPermission($this->user->getId(), 'access', 'test/import');
