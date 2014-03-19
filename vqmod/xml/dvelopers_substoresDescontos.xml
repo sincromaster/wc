@@ -148,7 +148,92 @@
             <search position="replace" index="1" offset="0"><![CDATA[$price = $product_special_query->row['price']]]></search>
             <add><![CDATA[$price = $product_special_query->row['price'] - ($product_special_query->row['price'] * $desconto / 100);]]></add>
         </operation>
+    </file>
+    
+    <file path="admin/model/feed/" name="order_feed.php">
+        <operation>
+            <search position="after" index="1" offset="0"><![CDATA[$this->load->model('sale/order');]]></search>
+            <add><![CDATA[
+                $this->load->model('substores/descontos');
+                $this->load->model('catalog/product');
+            ]]></add>
+        </operation>
         
+        <operation>
+            <search position="after" index="1" offset="0"><![CDATA[$option = array('OptionName']]></search>
+            <add><![CDATA[
+                $catalogProduct = $this->model_catalog_product->getProduct($product['product_id']);
+                $substoreProduct   = $this->model_substores_descontos->getSubstoreOrder($ord['order_id'], $product['product_id']);
+
+                $product['loja']     = $substoreProduct->num_rows > 0 ? $substoreProduct->row['store_id'] : 0;
+                $product['desconto'] = $substoreProduct->num_rows > 0 ? $substoreProduct->row['discount'] : 0;
+                $product['price']    = $catalogProduct['price'];
+                $product['total']    = $product['quantity']*$catalogProduct['price'];
+            ]]></add>
+        </operation>
+    </file>
+    
+    <file path="catalog/model/checkout/" name="order.php">
+        <operation>
+            <search position="after" index="1" offset="0"><![CDATA[class ModelCheckoutOrder extends Model {]]></search>
+            <add><![CDATA[
+                public function addSubstoreOrder($order_id, $product_id) {
+
+                $store_id = $this->config->get('config_store_id');
+
+                // Recupera o grupo do usuário
+                if ($this->customer->isLogged()) {
+
+                    $customer_group_id = $this->customer->getCustomerGroupId();
+                } else {
+
+                    $customer_group_id = $this->config->get('config_customer_group_id');
+                }
+
+                // Recupera a Categoria
+                $category_id = $this->db->query('SELECT * FROM ' . DB_PREFIX . 'product_to_category WHERE product_id = ' . (int) $product_id)->row['category_id'];
+
+                // Recupera os Descontos
+                $strSQLDiscounts = 'SELECT * FROM ' . DB_PREFIX . 'store_products_discount WHERE store_id = ' . $store_id . ' AND category_id = ' . $category_id . ' ORDER BY product_id DESC';
+
+                $queryResultDiscounts = $this->db->query($strSQLDiscounts);
+
+                foreach ($queryResultDiscounts->rows as $arrDesconto) {
+
+                    // Verifica o produto e a categoria
+                    if ($arrDesconto['product_id'] == $product_id || ($arrDesconto['category_id'] == $category_id && $arrDesconto['product_id'] == 0)) {
+
+                        // Verifica o grupo de usuários
+                        if ($arrDesconto['customer_group_id'] == 0 || $arrDesconto['customer_group_id'] == $customer_group_id) {
+
+                            $desconto = $arrDesconto['discount'];
+                            break;
+                        }
+                    }
+                }
+
+                $this->db->query('INSERT INTO ' . DB_PREFIX . 'substores_order_product VALUES(' . $order_id . ', ' . $product_id . ', ' . $store_id . ', ' . $desconto . ' )');
+                
+                $this->db->query(
+                    'INSERT INTO ' . DB_PREFIX . 'store_sales_comission_request (order_id, store_id, product_id, sales_comission, sales_created)
+                     VALUES (' . $order_id . ', ' . $store_id . ', ' . $product_id . ', (
+                         SELECT sales_comission 
+                         FROM ' . DB_PREFIX . 'sales_comission sc 
+                         WHERE sc.product_id = ' . $product_id . ' 
+                         AND sc.order_id = ' . $order_id . '), 
+                    NOW());');
+            }
+            ]]></add>
+        </operation>
+        
+        <operation>
+            <search position="before" index="1" offset="0"><![CDATA[$order_product_id = $this->db->getLastId();]]></search>
+            <add><![CDATA[
+                if($this->config->get('config_store_id') > 0) {
+                    $this->addSubstoreOrder($order_id, $product['product_id']);
+                }
+            ]]></add>
+        </operation>
     </file>
     
 </modification>
