@@ -22,6 +22,11 @@ class ModelSubstoresDescontos extends Model {
         }
     }
 
+    public function getSubstoresCategoryProduct($product_id) {
+        
+        return $this->db->query('SELECT * FROM ' . DB_PREFIX . 'product_to_category WHERE product_id = ' . $product_id)->row['category_id'];
+    }
+    
     public function getSubstoresProduct($category_id, $arrProduct) {
 
         $strSQL = 'SELECT * FROM ' . DB_PREFIX . 'store WHERE url = "http://' . $this->request->server['SERVER_NAME'] . '/"';
