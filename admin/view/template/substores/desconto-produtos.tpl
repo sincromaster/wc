@@ -121,15 +121,7 @@
                                     <input type="text" name="discount[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
                                     <input type="text" name="sales_commission[]" maxlength="5" size="2" />
-=======
-                                    <input type="text" name="committee[]" maxlength="5" size="2" />
->>>>>>> Stashed changes
-=======
-                                    <input type="text" name="sales_commission[]" maxlength="5" size="2" />
->>>>>>> 80ceab41e009373ad338647c12fe4f5c3eccbbbb
                                 </td>
                                 <td>
                                     <select name="customer_group_id[]">
@@ -166,15 +158,7 @@
                                     <input type="text" name="discount[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-                                    <input type="text" name="sales_commission[]" maxlength="5" size="2" />
-=======
-                                    <input type="text" name="committee[]" maxlength="5" size="2" />
->>>>>>> Stashed changes
-=======
-                                    <input type="text" name="sales_commission[]" maxlength="5" size="2" />
->>>>>>> 80ceab41e009373ad338647c12fe4f5c3eccbbbb
+                                   <input type="text" name="sales_commission[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
                                     <select name="customer_group_id[]">
