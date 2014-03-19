@@ -37,9 +37,9 @@
     <div class="content">
 
       <div id="tabs" class="htabs">
-        <a href="javascript:;" style="display: inline"><?php echo $text_substore_desconto_produtos; ?></a>
+        <a href="<?php echo $tab_desconto_produtos; ?>" style="display: inline"><?php echo $text_substore_desconto_produtos; ?></a>
         <a href="<?php echo $tab_desconto_cupons; ?>" style="display: inline"><?php echo $text_substore_desconto_cupom; ?></a>
-        <a href="<?php echo $tab_comissoes; ?>" style="display: inline" class="selected"><?php echo $text_substore_comissoes; ?></a>
+        <a href="javascript:;" style="display: inline" class="selected"><?php echo $text_substore_comissoes; ?></a>
       </div>
 
       <form action="<?php echo $form['action']; ?>" method="post" enctype="multipart/form-data" id="form-comissoes">

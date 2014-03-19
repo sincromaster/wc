@@ -37,7 +37,7 @@
         <div class="content">
 
             <div id="tabs" class="htabs">
-                <a href="<?php echo $text_substore_desconto_produtos; ?>" style="display: inline"><?php echo $text_substore_desconto_produtos; ?></a>
+                <a href="<?php echo $tab_desconto_produtos; ?>" style="display: inline"><?php echo $text_substore_desconto_produtos; ?></a>
                 <a href="javascript:;" class="selected" style="display: inline"><?php echo $text_substore_desconto_cupom; ?></a>
                 <a href="<?php echo $tab_comissoes; ?>" style="display: inline"><?php echo $text_substore_comissoes; ?></a>
             </div>

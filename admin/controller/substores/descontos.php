@@ -266,6 +266,7 @@ class ControllerSubstoresDescontos extends Controller {
         }
         
         // Tabs
+        $this->data['tab_desconto_produtos'] = $this->url->link('substores/descontos/produtos', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
         $this->data['tab_desconto_cupons'] = $this->url->link('substores/descontos/cupom', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
         $this->data['tab_comissoes'] = $this->url->link('substores/comissoes', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
         $this->data['text_substore_desconto_produtos'] = $this->language->get('text_substore_desconto_produtos');
