@@ -96,6 +96,7 @@ class ControllerSubstoresDescontos extends Controller {
         $this->data['text_substore_category'] = $this->language->get('text_substore_category');
         $this->data['text_substore_product'] = $this->language->get('text_substore_product');
         $this->data['text_substore_discount'] = $this->language->get('text_substore_discount');
+        $this->data['text_substore_committee'] = $this->language->get('text_substore_committee');
         $this->data['text_substore_customer_group'] = $this->language->get('text_substore_customer_group');
         $this->data['text_substore_actions'] = $this->language->get('text_substore_actions');
         
@@ -157,19 +158,25 @@ class ControllerSubstoresDescontos extends Controller {
 
                 // Remove os registros da tabela para inseri-los novamente
                 $this->db->query('DELETE FROM ' . DB_PREFIX . 'store_products_discount WHERE store_id = ' . $arrPost['store_id']);
+                $this->db->query('DELETE FROM ' . DB_PREFIX . 'store_committee WHERE store_id = ' . $arrPost['store_id']);
                 
                 $intTotal = count($arrPost['category_id']);
-                
                 // Insere os registros na tabela
                 for($i = 0; $i < $intTotal; $i++) {
                     
                     if(!empty($arrPost['category_id'][$i]) && !empty($arrPost['discount'])) {
                         
+                        // Insert da tabela de descontos
                         $strSQL = 'INSERT INTO ' . DB_PREFIX . $arrPost['table'] . ' (store_id, category_id, product_id, discount, status, customer_group_id)';
                         $strSQL .= ' VALUES(' . $arrPost['store_id']. ', ' . $arrPost['category_id'][$i] . ', ' . $arrPost['product_id'][$i] . ', ' . $arrPost['discount'][$i] . ', 1, ' . $arrPost['customer_group_id'][$i] . ')';
                         
-                        // Executa a query
+                        // Insert da tabela de comissao
+                        $committeeSQL = 'INSERT INTO ' . DB_PREFIX . 'store_committee' . ' (store_id, product_id, committee, created)';
+                        $committeeSQL .= ' VALUES(' . $arrPost['store_id']. ', ' . $arrPost['product_id'][$i] . ', ' . $arrPost['committee'][$i] . ',' . time() .')';
+                        
+                        // Executa as querys
                         $this->db->query($strSQL);
+                        $this->db->query($committeeSQL);
                     }
                 }
 
@@ -190,29 +197,9 @@ class ControllerSubstoresDescontos extends Controller {
                     // Retorna a mensagem
                     $this->session->data['success'] = $this->language->get('text_substore_success');
                 }
-                break;
-                
-             case 'store_comissao_revenda':
-               
-      
-                // Remove os registros da tabela para inseri-los novamente
-                $this->db->query('DELETE FROM ' . DB_PREFIX . 'store_comissao_revenda WHERE store_id = ' . $arrPost['store_id']);
-                
-                foreach($arrPost['revenda_id'] as $key => $val) {
-
-                   if($val != '0' || $val != '' ) {
-                     $strSQL = 'INSERT INTO ' . DB_PREFIX . $arrPost['table'] . ' (revenda_id, comissao, store_id)';
-                     $strSQL .= ' VALUES(' . (int)$val. ', ' . (float)$arrPost['comissao'][$key]. ', ' . $arrPost['store_id'] . ')';
-                     $this->db->query($strSQL);
-
-                   }
-                }
-                // Retorna a mensagem
-                $this->session->data['success'] = $this->language->get('text_substore_success');
-               
-                break;
+                break;      
         }
-        
+       
         // Redireciona para a lista de sublojas
         $this->redirect($this->url->link('substores/substore', 'token=' . $this->session->data['token'], 'SSL'));
     }

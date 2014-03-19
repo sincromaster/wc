@@ -53,6 +53,7 @@
                             <th><?php echo $text_substore_category; ?> <span class="required">*</span></th>
                             <th><?php echo $text_substore_product; ?></th>
                             <th><?php echo $text_substore_discount; ?> <span class="required">*</span></th>
+                            <th><?php echo $text_substore_committee; ?> </th>
                             <th><?php echo $text_substore_customer_group; ?></th>
                             <th><a href="#" class="add"><img src="view/image/add.png" alt="Novo" title="Novo" /></a></th>
                         </tr>
@@ -82,6 +83,9 @@
                                     </td>
                                     <td>
                                         <input type="text" name="discount[]" maxlength="5" size="2" value="<?php echo $discount['discount'] ?>"/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="committee[]" maxlength="5" size="2" value="<?php echo $discount['committee'] ?>"/>
                                     </td>
                                     <td>
                                         <select name="customer_group_id[]">
@@ -117,6 +121,9 @@
                                     <input type="text" name="discount[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
+                                    <input type="text" name="committee[]" maxlength="5" size="2" />
+                                </td>
+                                <td>
                                     <select name="customer_group_id[]">
                                         <option value="0">Todos</option>
                                         <?php foreach ($form['customers'] as $arrCustomerGroup): ?>
@@ -149,6 +156,9 @@
                                 </td>
                                 <td>
                                     <input type="text" name="discount[]" maxlength="5" size="2" />
+                                </td>
+                                <td>
+                                    <input type="text" name="committee[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
                                     <select name="customer_group_id[]">

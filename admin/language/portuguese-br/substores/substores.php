@@ -18,6 +18,7 @@ $_['text_substore_success']             = 'Configurações modificadas com suces
 $_['text_substore_desconto_produtos']   = 'Descontos por produtos';
 $_['text_substore_desconto_cupom']      = 'Cupom de Desconto';
 $_['text_substore_comissoes']           = 'Comissões';
+$_['text_substore_committee']           = 'Comissões (%)';
 
 // Column
 $_['column_substore_name']          = 'Nome';

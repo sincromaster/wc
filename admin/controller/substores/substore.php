@@ -75,36 +75,22 @@ class ControllerSubstoresSubstore extends Controller {
         COMMENT="Relacionamento entre as sublojas e os cupons de desconto"';
         
         $this->db->query($strSubstoresCuponsDescontoInstall);
-        
-        // Criação da tabela de revendedores
-        $strRevendedoresSQL = 
-        'CREATE TABLE ' . DB_PREFIX . 'store_revenda (
-            revenda_id INT NOT NULL,
-            revenda_nome VARCHAR(255),
+
+        // Criacao da tabela para vinculo de sublojas/comissao
+        $strSubstoresComissaoInstall =
+        'CREATE TABLE ' . DB_PREFIX . 'store_committee (
+            store_id INT NULL,
+            product_id INT NULL,
+            committee DECIMAL(10,2) NOT NULL,
+            created INT NULL,
             PRIMARY KEY (
-                revenda_id 
+                store_id,
+                product_id
             )
         )
-        COMMENT="Revenda"';
-        $this->db->query($strRevendedoresSQL);
-
-        // Criação da tabela para relacionamento entre a venda e as comissoes
-        $strComissaoRevendedoresSQL = 
-        'CREATE TABLE ' . DB_PREFIX . 'store_comissao_revenda (
-            comissao_id INT NOT NULL AUTO_INCREMENT,
-            revenda_id VARCHAR(255),
-            comissao DECIMAL(10,2) NOT NULL,
-            store_id INT NOT NULL,
-
-            PRIMARY KEY (
-                comissao_id,
-                revenda_id,
-                store_id
-            )
-        )
-        COMMENT="Dados comissao revenda"';
-        $this->db->query($strComissaoRevendedoresSQL);
+        COMMENT="Relacionamento entre as sublojas e as comissoes por produto"';
         
+        $this->db->query($strSubstoresComissaoInstall);
         
 //        Permissões
 //        this->model_user_user_group->addPermission($this->user->getId(), 'access', 'test/import');
