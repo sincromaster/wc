@@ -19,7 +19,7 @@ class ControllerSubstoresComissoes extends Controller {
         $this->language->load('substores/comissoes');
 
         // Define o título da página
-        $this->document->setTitle($this->language->get('heading_title'));
+        $this->document->setTitle($this->language->get('heading_title_comissoes'));
 
         $this->document->addScript('view/javascript/substores/substores.js');
 
@@ -118,7 +118,6 @@ class ControllerSubstoresComissoes extends Controller {
                 'revenda_nome' => $val['revenda_nome'],
             );
         }
-
 
         // Carregamento dos textos
         $this->data['heading_title'] = $this->language->get('heading_title');

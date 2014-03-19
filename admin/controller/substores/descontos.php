@@ -36,6 +36,9 @@ class ControllerSubstoresDescontos extends Controller {
         // Carrega a Language
         $this->language->load('substores/substores');
         
+        // Define o título da página
+        $this->document->setTitle($this->language->get('heading_title_descontos'));
+        
         // Page title
         $this->data['heading_title'] = $this->language->get('heading_title');
         
@@ -218,6 +221,9 @@ class ControllerSubstoresDescontos extends Controller {
         
         // Carrega a Language
         $this->language->load('substores/substores');
+        
+        // Define o título da página
+        $this->document->setTitle($this->language->get('heading_title_coupons'));
         
         // Page title
         $this->data['heading_title'] = $this->language->get('heading_title');

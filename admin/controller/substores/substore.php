@@ -164,6 +164,7 @@ class ControllerSubstoresSubstore extends Controller {
         // Lista de lojas
         $this->data['stores'] = array();
 
+        $this->load->model('setting/setting');
         foreach($arrRows as $arrStore) {
             
             // Ações disponíveis para a loja
@@ -174,9 +175,11 @@ class ControllerSubstoresSubstore extends Controller {
                 'href' => $this->url->link('substores/descontos/produtos', 'store_id=' . $arrStore['store_id'] . '&token=' . $this->session->data['token'], 'SSL')
             );
             
+            
+            $arrSettings = $this->model_setting_setting->getSetting('config', $arrStore['store_id']);
             $this->data['stores'][] = array(
                 'store_id' => $arrStore['store_id'],
-                'name' => $arrStore['name'],
+                'name' => $arrSettings['config_title'],
                 'url' => '<a href="'.$arrStore['url'].'">' . $arrStore['url']. '</a>',
                 'selected' => isset($this->request->post['selected']) && in_array($arrStore['store_id'], $this->request->post['selected']),
                 'action' => $action

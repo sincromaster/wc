@@ -21,7 +21,7 @@
     <file path="admin/language/portuguese-br/common/" name="header.php">
         <operation>
             <search position="after"><![CDATA[// Text]]></search>
-            <add><![CDATA[$_['text_substores'] = 'Sub-Lojas'; ]]></add>
+            <add><![CDATA[$_['text_substores'] = ' Parceiros'; ]]></add>
         </operation>
     </file>
 
@@ -30,7 +30,7 @@
             <search position="before" index="1" offset="0"><![CDATA[<li id="system"><a class="top"><?php echo $text_system; ?></a>]]></search>
             <add><![CDATA[
                 <?php if(isset($substores)) : ?>
-                    <li id="substore"><a class="top" href="<?php echo $substores;?>"><img width="22" height="22" style="vertical-align: middle;" src="view/image/setting.png" /><b><?php echo $text_substores;?></b></a></li>
+                    <li id="substore"><a class="top" href="<?php echo $substores;?>"><img width="22" height="22" style="vertical-align: middle;" src="view/image/substores/group.png" /><b><?php echo $text_substores;?></b></a></li>
                 <?php endif; ?>
             ]]></add>
         </operation>
@@ -96,76 +96,59 @@
             ]]></add>
         </operation>
     </file>
-<!--    <file path="catalog/controller/checkout/" name="cart.php">
-
+    
+    <file path="system/library/" name="cart.php">
         <operation>
-            <search position="after" index="1" offset="0"><![CDATA[$products = $this->cart->getProducts();]]></search>
-            <add><![CDATA[$this->load->model('substores/descontos');]]></add>
+            <search position="after" index="1" offset="0"><![CDATA[if (!$this->data) {]]></search>
+            <add><![CDATA[$store_id = $this->config->get('config_store_id');]]></add>
         </operation>
-
+        
         <operation>
-            <search position="before" index="1" offset="0"><![CDATA[foreach ($products as $product_2) {]]></search>
+            <search position="after" index="1" offset="0"><![CDATA[$product_discount_query]]></search>
             <add><![CDATA[
-                    $category_id = $this->db->query('SELECT * FROM ' . DB_PREFIX . 'product_to_category WHERE product_id = ' . $product['product_id'])->row['category_id'];
-                    $product['price'] = $this->model_substores_descontos->getSubstoresProduct($category_id, $product);
+                // Recupera o grupo do usuário
+                if ($this->customer->isLogged()) {
+
+                    $customer_group_id = $this->customer->getCustomerGroupId();
+                } else {
+
+                    $customer_group_id = $this->config->get('config_customer_group_id');
+                }
+
+                // Recupera a Categoria
+                $category_id = $this->db->query('SELECT * FROM ' . DB_PREFIX . 'product_to_category WHERE product_id = ' . (int) $product_id)->row['category_id'];
+
+                // Recupera os Descontos
+                $strSQLDiscounts = 'SELECT * FROM ' . DB_PREFIX . 'store_products_discount WHERE store_id = ' . $store_id . ' AND category_id = ' . $category_id . ' ORDER BY product_id DESC';
+
+                $queryResultDiscounts = $this->db->query($strSQLDiscounts);
+
+                foreach ($queryResultDiscounts->rows as $arrDesconto) {
+
+                    // Verifica o produto e a categoria
+                    if ($arrDesconto['product_id'] == $product_id || ($arrDesconto['category_id'] == $category_id && $arrDesconto['product_id'] == 0)) {
+
+                        // Verifica o grupo de usuários
+                        if ($arrDesconto['customer_group_id'] == 0 || $arrDesconto['customer_group_id'] == $customer_group_id) {
+
+                            $price -= $price * $arrDesconto['discount'] / 100;
+                            break;
+                        }
+                    }
+                }
             ]]></add>
         </operation>
-
+        
         <operation>
-            <search position="before" index="1" offset="0"><![CDATA[$this->data['totals'] = $total_data;]]></search>
-            <add><![CDATA[
-                    $total = 0;
-                    foreach($products as $key => $product) {
-
-                        $category_id = $this->db->query('SELECT * FROM ' . DB_PREFIX . 'product_to_category WHERE product_id = ' . $product['product_id'])->row['category_id'];
-                        $total += floatval($this->model_substores_descontos->getSubstoresProduct($category_id, $product));
-
-                    }
-
-                    foreach($total_data as $key => $item) {
-
-                        $total_data[$key]['text'] = $this->currency->format($total, $this->config->get('config_currency'));
-                        $total_data[$key]['value'] = $total;
-                    }
-            ]]></add>
+            <search position="replace" index="1" offset="0"><![CDATA[$price = $product_discount_query->row['price']]]></search>
+            <add><![CDATA[$price = $product_discount_query->row['price'] - ($product_discount_query->row['price'] * $desconto / 100);]]></add>
         </operation>
+        
+        <operation>
+            <search position="replace" index="1" offset="0"><![CDATA[$price = $product_special_query->row['price']]]></search>
+            <add><![CDATA[$price = $product_special_query->row['price'] - ($product_special_query->row['price'] * $desconto / 100);]]></add>
+        </operation>
+        
     </file>
     
-    <file path="catalog/controller/module/" name="cart.php">
-        
-        <operation>
-            <search position="before" index="1" offset="0"><![CDATA[if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {]]></search>
-            <add><![CDATA[$this->load->model('substores/descontos');]]></add>
-        </operation>
-        
-        <operation>
-            <search position="before" index="1" offset="0"><![CDATA[$this->data['totals'] = $total_data;]]></search>
-            <add><![CDATA[
-                $products = array_values($this->cart->getProducts());
-                
-                $total = 0;
-                foreach($products as $key => $product) {
-                    
-                    $category_id = $this->db->query('SELECT * FROM ' . DB_PREFIX . 'product_to_category WHERE product_id = ' . $product['product_id'])->row['category_id'];
-                    $total += floatval($this->model_substores_descontos->getSubstoresProduct($category_id, $product));
-                    
-                }
-                
-                foreach($total_data as $key => $item) {
-                    
-                    $total_data[$key]['text'] = $this->currency->format($total, $this->config->get('config_currency'));
-                    $total_data[$key]['value'] = $total;
-                }
-                
-            ]]></add>
-        </operation>
-        
-        <operation>
-            <search position="before" index="1" offset="0"><![CDATA[$option_data = array();]]></search>
-            <add><![CDATA[
-                $category_id = $this->db->query('SELECT * FROM ' . DB_PREFIX . 'product_to_category WHERE product_id = ' . $product['product_id'])->row['category_id'];
-                $product['price'] = $this->model_substores_descontos->getSubstoresProduct($category_id, $product);
-            ]]></add>
-        </operation>
-    </file>-->
 </modification>
