@@ -60,6 +60,7 @@
             <?php if (!empty($form_state)) : ?>
 
               <?php foreach ($form_state as $val) : ?>
+               <?php $ids[$val['revenda_id']] = $val['revenda_id']; ?>
 
                 <tr>
                   <td>
@@ -84,6 +85,7 @@
                   <select name="revenda_id[]">
                     <option value="0">Selecione</option>
                     <?php foreach ($revendas as $rev): ?>
+                      <?php if( $ids[$rev['revenda_id']] ){ continue; } ?> 
                       <option value="<?php echo $rev['revenda_id']; ?>"><?php echo $rev['revenda_nome']; ?></option>
                     <?php endforeach; ?>
                   </select>

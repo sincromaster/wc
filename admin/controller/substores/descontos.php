@@ -199,7 +199,7 @@ class ControllerSubstoresDescontos extends Controller {
 
                    if($val != '0' || $val != '' ) {
                      $strSQL = 'INSERT INTO ' . DB_PREFIX . $arrPost['table'] . ' (revenda_id, comissao, store_id)';
-                     $strSQL .= ' VALUES(' . (int)$val. ', ' . (int)$arrPost['comissao'][$key]. ', ' . $arrPost['store_id'] . ')';
+                     $strSQL .= ' VALUES(' . (int)$val. ', ' . (float)$arrPost['comissao'][$key]. ', ' . $arrPost['store_id'] . ')';
                      $this->db->query($strSQL);
 
                    }
