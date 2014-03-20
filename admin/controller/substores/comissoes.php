@@ -97,9 +97,7 @@ class ControllerSubstoresComissoes extends Controller {
 
         //recuperamos todos as comissoes cadastrados
         $arrayComissoes = $this->model_substores_comissoes->getCommisoes($intSubstoreID);
-//        var_dump($arrayComissoes);exit;
         $this->data['form_state'] = $arrayComissoes;
-
 
         // Carregamento dos textos
         $this->data['heading_title'] = $this->language->get('heading_title');
