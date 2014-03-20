@@ -75,7 +75,7 @@ class ModelSubstoresInstall extends Model {
             order_id INT NOT NULL,
             store_id INT NULL,
             product_id INT NULL,
-            sales_commission INT NOT NULL,
+            sales_comission INT NOT NULL,
             sales_created INT NULL,
             PRIMARY KEY (
                 order_id,
