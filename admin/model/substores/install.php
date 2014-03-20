@@ -55,10 +55,10 @@ class ModelSubstoresInstall extends Model {
  
         // Criacao da tabela para vinculo de sublojas/comissao
         $strSubstoresComissaoInstall =
-        'CREATE TABLE ' . DB_PREFIX . 'store_sales_commission (
+        'CREATE TABLE ' . DB_PREFIX . 'store_sales_comission (
             store_id INT NULL,
             product_id INT NULL,
-            sales_commission DECIMAL(10,2) NOT NULL,
+            sales_comission DECIMAL(10,2) NOT NULL,
             created INT NULL,
             PRIMARY KEY (
                 store_id,
@@ -71,7 +71,7 @@ class ModelSubstoresInstall extends Model {
 
         // Criacao da tabela para vinculo de sublojas com as compras/comissoes
         $strSubstoresSalesComissionInstall =
-        'CREATE TABLE ' . DB_PREFIX . 'store_sales_commission_request (
+        'CREATE TABLE ' . DB_PREFIX . 'store_sales_comission_request (
             order_id INT NOT NULL,
             store_id INT NULL,
             product_id INT NULL,
@@ -96,8 +96,8 @@ class ModelSubstoresInstall extends Model {
     public function uninstall() {
         $this->db->query('DROP TABLE ' . DB_PREFIX . 'store_products_discount');
         $this->db->query('DROP TABLE ' . DB_PREFIX . 'substores_order_product');
-        $this->db->query('DROP TABLE ' . DB_PREFIX . 'store_sales_commission');
-        $this->db->query('DROP TABLE ' . DB_PREFIX . 'store_sales_commission_request');
+        $this->db->query('DROP TABLE ' . DB_PREFIX . 'store_sales_comission');
+        $this->db->query('DROP TABLE ' . DB_PREFIX . 'store_sales_comission_request');
         $this->db->query('DROP TABLE ' . DB_PREFIX . 'store_coupons');
     }
 }

@@ -96,7 +96,7 @@ class ControllerSubstoresDescontos extends Controller {
         $this->data['text_substore_category'] = $this->language->get('text_substore_category');
         $this->data['text_substore_product'] = $this->language->get('text_substore_product');
         $this->data['text_substore_discount'] = $this->language->get('text_substore_discount');
-        $this->data['text_substore_sales_commission'] = $this->language->get('text_substore_sales_commission');
+        $this->data['text_substore_sales_comission'] = $this->language->get('text_substore_sales_comission');
         $this->data['text_substore_customer_group'] = $this->language->get('text_substore_customer_group');
         $this->data['text_substore_actions'] = $this->language->get('text_substore_actions');
         
@@ -158,7 +158,7 @@ class ControllerSubstoresDescontos extends Controller {
 
                 // Remove os registros da tabela para inseri-los novamente
                 $this->db->query('DELETE FROM ' . DB_PREFIX . 'store_products_discount WHERE store_id = ' . $arrPost['store_id']);
-                $this->db->query('DELETE FROM ' . DB_PREFIX . 'store_sales_commission WHERE store_id = ' . $arrPost['store_id']);
+                $this->db->query('DELETE FROM ' . DB_PREFIX . 'store_sales_comission WHERE store_id = ' . $arrPost['store_id']);
                 
                 $intTotal = count($arrPost['category_id']);
                 // Insere os registros na tabela
@@ -171,12 +171,12 @@ class ControllerSubstoresDescontos extends Controller {
                         $strSQL .= ' VALUES(' . $arrPost['store_id']. ', ' . $arrPost['category_id'][$i] . ', ' . $arrPost['product_id'][$i] . ', ' . $arrPost['discount'][$i] . ', 1, ' . $arrPost['customer_group_id'][$i] . ')';
                         
                         // Insert da tabela de comissao
-                        $salesCommissionSQL = 'INSERT INTO ' . DB_PREFIX . 'store_sales_commission' . ' (store_id, product_id, sales_commission, created)';
-                        $salesCommissionSQL .= ' VALUES(' . $arrPost['store_id']. ', ' . $arrPost['product_id'][$i] . ', ' . $arrPost['sales_commission'][$i] . ',' . time() .')';
+                        $salescomissionSQL = 'INSERT INTO ' . DB_PREFIX . 'store_sales_comission' . ' (store_id, product_id, sales_comission, created)';
+                        $salescomissionSQL .= ' VALUES(' . $arrPost['store_id']. ', ' . $arrPost['product_id'][$i] . ', ' . $arrPost['sales_comission'][$i] . ',' . time() .')';
                         
                         // Executa as querys
                         $this->db->query($strSQL);
-                        $this->db->query($salesCommissionSQL);
+                        $this->db->query($salescomissionSQL);
                     }
                 }
 
