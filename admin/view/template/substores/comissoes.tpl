@@ -50,7 +50,7 @@
             <tr>
               <td><?php echo $val['order_id'] ; ?></td>
               <td><?php echo $val['name'] ; ?></td>
-              <td><?php echo $val['sales_comission'] ; ?>%</td>
+              <td><?php echo $val['sales_comission'] ; ?></td>
               <td><?php echo date('d/m/Y H:i:s', $val['sales_created'])  ; ?></td>
             </tr>
             <?php endforeach; ?>
