@@ -103,7 +103,9 @@ class ControllerSubstoresComissoes extends Controller {
         $this->data['heading_title'] = $this->language->get('heading_title');
         $this->data['text_no_results'] = $this->language->get('text_no_results');
         $this->data['text_substore_comissao_pedido_id'] = $this->language->get('text_substore_comissao_pedido_id');
-        $this->data['text_substore_comissao_produto'] = $this->language->get('text_substore_comissao_produto');
+        $this->data['text_substore_nome_produto'] = $this->language->get('text_substore_nome_produto');
+        $this->data['text_substore_preco_produto'] = $this->language->get('text_substore_preco_produto');
+        $this->data['text_substore_comissao_valor'] = $this->language->get('text_substore_comissao_valor');
         $this->data['text_substore_comissao_comissao'] = $this->language->get('text_substore_comissao_comissao');
         $this->data['text_substore_comissao_data'] = $this->language->get('text_substore_comissao_data');
 

@@ -28,9 +28,11 @@ $_['text_substore_save']            = 'Salvar';
 $_['text_substore_cancel']          = 'Cancelar';
 
 $_['text_substore_comissao_pedido_id']    = 'ID do pedido';
-$_['text_substore_comissao_produto']         = 'Produto';
-$_['text_substore_comissao_comissao']        = 'Comissão';
-$_['text_substore_comissao_data']            = 'Data Compra';
+$_['text_substore_preco_produto']         = 'Preço do Produto';
+$_['text_substore_comissao_valor']        = 'Valor da comissão';
+$_['text_substore_nome_produto']          = 'Produto';
+$_['text_substore_comissao_comissao']     = 'Comissão (%)';
+$_['text_substore_comissao_data']         = 'Data Compra';
 
 
 

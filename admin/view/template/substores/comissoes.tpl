@@ -38,8 +38,10 @@
           <thead>
             <tr>
               <td><?php echo $text_substore_comissao_pedido_id; ?></th>
-              <td><?php echo $text_substore_comissao_produto; ?></th>
+              <td><?php echo $text_substore_nome_produto; ?></th>
               <td><?php echo $text_substore_comissao_comissao; ?></th>
+              <td><?php echo $text_substore_preco_produto; ?></th>
+              <td><?php echo $text_substore_comissao_valor; ?></th>
               <td><?php echo $text_substore_comissao_data; ?></th>
             </tr>
           </thead>
@@ -51,7 +53,9 @@
               <td><?php echo $val['order_id'] ; ?></td>
               <td><?php echo $val['name'] ; ?></td>
               <td><?php echo $val['sales_comission'] ; ?></td>
-              <td><?php echo date('d/m/Y H:i:s', $val['sales_created'])  ; ?></td>
+              <td><?php echo $val['price'] ; ?></td>
+              <td><?php echo (($val['price'] * $val['sales_comission']) / 100) ; ?></td>
+              <td><?php echo date('d/m/Y',  $val['sales_created'])  ; ?></td>
             </tr>
             <?php endforeach; ?>
 
