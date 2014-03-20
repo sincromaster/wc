@@ -1,8 +1,4 @@
 <?php
-
-//ini_set('display_errors',1);
-//ini_set('display_startup_erros',1);
-//error_reporting(E_ALL);
 /**
  * Substores comissoes
  * 
@@ -28,26 +24,28 @@ class ControllerSubstoresComissoes extends Controller {
 
         $intSubstoreID = $this->request->get['store_id'];
 
-        $this->getRevendas();
+        $this->getRelatorioCommisoes($intSubstoreID);
     }
 
     /**
-     * Retorna a lista de sub-lojas criadas
+     * Retorna relatorio de commisões
      * 
      * @author wellington Fugiwara Peres <wellington.fugiwara@gmail.com>
      * @since 2014-03-16
      * 
      * @param array $arrRows ontendo os dados da revenda
      */
-    private function getRevendas() {
+    private function getRelatorioCommisoes($intSubstoreID = FALSE ) {
 
         $url = '';
 
         if (isset($this->request->get['page'])) {
             $url .= '&page=' . $this->request->get['page'];
         }
-
-        $intSubstoreID = $this->request->get['store_id'];
+        
+        if($intSubstoreID) {
+          $intSubstoreID = $this->request->get['store_id'];
+        }
 
         // Tabs
         $this->data['tab_desconto_cupons'] = $this->url->link('substores/descontos/cupom', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
@@ -93,41 +91,23 @@ class ControllerSubstoresComissoes extends Controller {
         $this->data['tab_desconto_produtos'] = $this->url->link('substores/descontos/produtos', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
         $this->data['tab_desconto_cupons'] = $this->url->link('substores/descontos/cupom', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
         $this->data['tab_comissoes'] = $this->url->link('substores/comissoes', 'store_id=' . $intSubstoreID . '&token=' . $this->session->data['token'], 'SSL');
-        $this->data['text_substore_desconto_produtos'] = $this->language->get('text_substore_desconto_produtos');
-        $this->data['text_substore_desconto_cupom'] = $this->language->get('text_substore_desconto_cupom');
-        $this->data['text_substore_comissoes'] = $this->language->get('text_substore_comissoes');
-
+        
         // Campos do formulário
-        $this->data['form']['action'] = $this->url->link('substores/descontos/save', 'token=' . $this->session->data['token'], 'SSL');
-        $this->data['form']['table'] = 'store_comissao_revenda';
-        $this->data['form']['store_id'] = $intSubstoreID;
+        $this->data['form']['action'] = $this->url->link('substores/comissoes', 'token=' . $this->session->data['token'], 'SSL');
 
         //recuperamos todos as comissoes cadastrados
-        $arrayRevendas = $this->model_substores_comissoes->getRevendas();
-        $this->data['revendas'] = $arrayRevendas;
+        $arrayComissoes = $this->model_substores_comissoes->getCommisoes($intSubstoreID);
+//        var_dump($arrayComissoes);exit;
+        $this->data['form_state'] = $arrayComissoes;
 
-        //recuperamos todos as comissoes cadastrados
-        $arrayRevendasCadastradas = $this->model_substores_comissoes->getRevendasCadastradas($intSubstoreID);
-        $this->data['form_state'] = $arrayRevendasCadastradas;
-
-        //definimos o array com as revendas
-        $this->data['revendas'] = array();
-        foreach ($arrayRevendas as $val) {
-            $this->data['revendas'][] = array(
-                'revenda_id' => $val['revenda_id'],
-                'revenda_nome' => $val['revenda_nome'],
-            );
-        }
 
         // Carregamento dos textos
         $this->data['heading_title'] = $this->language->get('heading_title');
         $this->data['text_no_results'] = $this->language->get('text_no_results');
-        $this->data['column_revenda_id'] = $this->language->get('column_revenda_id');
-        $this->data['column_substore_revenda_name'] = $this->language->get('column_substore_revenda_name');
-        $this->data['column_comissao'] = $this->language->get('column_revenda_comisso');
-        $this->data['column_url'] = $this->language->get('column_substore_url');
-        $this->data['column_action'] = $this->language->get('column_substore_action');
-        $this->data['button_insert'] = $this->language->get('button_insert');
+        $this->data['text_substore_comissao_pedido_id'] = $this->language->get('text_substore_comissao_pedido_id');
+        $this->data['text_substore_comissao_produto'] = $this->language->get('text_substore_comissao_produto');
+        $this->data['text_substore_comissao_comissao'] = $this->language->get('text_substore_comissao_comissao');
+        $this->data['text_substore_comissao_data'] = $this->language->get('text_substore_comissao_data');
 
         // Define as mensagens
         if (isset($this->error['warning'])) {

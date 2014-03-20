@@ -1,37 +1,24 @@
 <?php echo $header; ?>
-
 <div id="content">
-
   <div class="breadcrumb">
 
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-
-      <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-
+    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
 
   </div>
 
   <?php if ($error_warning) { ?>
-
-    <div class="warning"><?php echo $error_warning; ?></div>
-
+  <div class="warning"><?php echo $error_warning; ?></div>
   <?php } ?>
 
   <?php if ($success) { ?>
-
-    <div class="success"><?php echo $success; ?></div>
-
+  <div class="success"><?php echo $success; ?></div>
   <?php } ?>
 
   <div class="box">
     <div class="heading">
       <h1><img src="view/image/setting.png" alt="" /> <?php echo $heading_title; ?></h1>
-      <div class="buttons">
-        <a onclick="$('#form-comissoes').submit();" class="button"><?php echo $text_substore_save; ?></a>
-        <a href="<?php echo $button_substore_cancel; ?>" class="button"><?php echo $text_substore_cancel; ?></a>
-      </div>
-
     </div>
 
     <div class="content">
@@ -47,74 +34,33 @@
         <input type="hidden" name="store_id" value="<?php echo $form['store_id'] ?>" />
         <input type="hidden" name="table" value="<?php echo $form['table'] ?>" />
 
-        <table>
+        <table class="list">
           <thead>
             <tr>
-              <th><?php echo $column_substore_revenda_name; ?> <span class="required">*</span></th>
-              <th><?php echo $column_comissao; ?> <span class="required">*</span></th>
-              <th><a href="#" class="add"><img src="view/image/add.png" alt="Novo" title="Novo" /></a></th>
+              <td><?php echo $text_substore_comissao_pedido_id; ?></th>
+              <td><?php echo $text_substore_comissao_produto; ?></th>
+              <td><?php echo $text_substore_comissao_comissao; ?></th>
+              <td><?php echo $text_substore_comissao_data; ?></th>
             </tr>
           </thead>
           <tbody>
 
             <?php if (!empty($form_state)) : ?>
-
-              <?php foreach ($form_state as $val) : ?>
-               <?php $ids[$val['revenda_id']] = $val['revenda_id']; ?>
-
-                <tr>
-                  <td>
-                    <select name="revenda_id[]">
-                      <option value="0">Selecione</option>
-                      <?php foreach ($revendas as $rev): ?>
-                        <option value="<?php echo $rev['revenda_id']; ?>" <?php echo $val['revenda_id'] == $rev['revenda_id'] ? 'selected' : null; ?>><?php echo $rev['revenda_nome']; ?></option>
-                      <?php endforeach; ?>
-                    </select>
-                  </td>
-                  <td>
-                    <input type="text" name="comissao[]" maxlength="5" size="2" value="<?php echo $val['comissao'] ?>"/>
-                  </td>
-                  <td>
-                    <a href="#" class="remove"><img src="view/image/delete.png" alt="Excluir" title="Excluir" /></a>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-              <!--item vazio quando tem dados -->
-              <tr>
-                <td>
-                  <select name="revenda_id[]">
-                    <option value="0">Selecione</option>
-                    <?php foreach ($revendas as $rev): ?>
-                      <?php if( $ids[$rev['revenda_id']] ){ continue; } ?> 
-                      <option value="<?php echo $rev['revenda_id']; ?>"><?php echo $rev['revenda_nome']; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </td>
-                <td>
-                  <input type="text" name="comissao[]" maxlength="5" size="2" />
-                </td>
-                <td>
-                  <a href="#" class="remove"><img src="view/image/delete.png" alt="Excluir" title="Excluir" /></a>
-                </td>
-              </tr>
+            <?php foreach ($form_state as $val) : ?>
+            <tr>
+              <td><?php echo $val['order_id'] ; ?></td>
+              <td><?php echo $val['name'] ; ?></td>
+              <td><?php echo $val['sales_comission'] ; ?>%</td>
+              <td><?php echo date('d/m/Y H:i:s', $val['sales_created'])  ; ?></td>
+            </tr>
+            <?php endforeach; ?>
 
             <?php else: ?>
-              <tr>
-                <td>
-                  <select name="revenda_id[]">
-                    <option value="0">Selecione</option>
-                    <?php foreach ($revendas as $rev): ?>
-                      <option value="<?php echo $rev['revenda_id']; ?>"><?php echo $rev['revenda_nome']; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </td>
-                <td>
-                  <input type="text" name="comissao[]" maxlength="5" size="2" />
-                </td>
-                <td>
-                  <a href="#" class="remove"><img src="view/image/delete.png" alt="Excluir" title="Excluir" /></a>
-                </td>
-              </tr>
+            <tr>
+              <td colspan="3" align="center">
+                <?php echo $text_no_results ?>
+              </td>
+            </tr>
             <?php endif; ?>
           </tbody>
         </table>

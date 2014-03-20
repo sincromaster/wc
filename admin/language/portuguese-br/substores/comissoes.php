@@ -25,5 +25,13 @@ $_['column_revenda_id']             = 'Revendedores ID';
 $_['column_substore_url']           = 'URL da sub-loja';
 $_['column_substore_action']        = 'Ações';
 $_['text_substore_save']            = 'Salvar';
-$_['text_substore_cancel']        = 'Cancelar';
+$_['text_substore_cancel']          = 'Cancelar';
+
+$_['text_substore_comissao_pedido_id']    = 'ID do pedido';
+$_['text_substore_comissao_produto']         = 'Produto';
+$_['text_substore_comissao_comissao']        = 'Comissão';
+$_['text_substore_comissao_data']            = 'Data Compra';
+
+
+
 ?>
