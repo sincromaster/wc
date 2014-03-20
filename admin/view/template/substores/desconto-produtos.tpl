@@ -53,7 +53,7 @@
                             <th><?php echo $text_substore_category; ?> <span class="required">*</span></th>
                             <th><?php echo $text_substore_product; ?></th>
                             <th><?php echo $text_substore_discount; ?> <span class="required">*</span></th>
-                            <th><?php echo $text_substore_sales_commission; ?> </th>
+                            <th><?php echo $text_substore_sales_comission; ?> </th>
                             <th><?php echo $text_substore_customer_group; ?></th>
                             <th><a href="#" class="add"><img src="view/image/add.png" alt="Novo" title="Novo" /></a></th>
                         </tr>
@@ -85,7 +85,7 @@
                                         <input type="text" name="discount[]" maxlength="5" size="2" value="<?php echo $discount['discount'] ?>"/>
                                     </td>
                                     <td>
-                                        <input type="text" name="sales_commission[]" maxlength="5" size="2" value="<?php echo $discount['sales_commission'] ?>"/>
+                                        <input type="text" name="sales_comission[]" maxlength="5" size="2" value="<?php echo $discount['sales_comission'] ?>"/>
                                     </td>
                                     <td>
                                         <select name="customer_group_id[]">
@@ -121,7 +121,7 @@
                                     <input type="text" name="discount[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
-                                    <input type="text" name="sales_commission[]" maxlength="5" size="2" />
+                                    <input type="text" name="sales_comission[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
                                     <select name="customer_group_id[]">
@@ -158,7 +158,7 @@
                                     <input type="text" name="discount[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
-                                   <input type="text" name="sales_commission[]" maxlength="5" size="2" />
+                                   <input type="text" name="sales_comission[]" maxlength="5" size="2" />
                                 </td>
                                 <td>
                                     <select name="customer_group_id[]">
