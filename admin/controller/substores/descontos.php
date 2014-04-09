@@ -172,8 +172,9 @@ class ControllerSubstoresDescontos extends Controller {
                         
                         // Insert da tabela de comissao
                         $salescomissionSQL = 'INSERT INTO ' . DB_PREFIX . 'store_sales_comission' . ' (store_id, product_id, sales_comission, created)';
-                        $salescomissionSQL .= ' VALUES(' . $arrPost['store_id']. ', ' . $arrPost['product_id'][$i] . ', ' . $arrPost['sales_comission'][$i] . ',' . time() .')';
-                        
+                        $comission = ($arrPost['sales_comission'][$i] != '') ? $arrPost['sales_comission'][$i] : '0';
+                        $salescomissionSQL .= ' VALUES(' . $arrPost['store_id']. ', ' . $arrPost['product_id'][$i] . ', ' . $comission . ',' . time() .')';
+                        unset($comission);
                         // Executa as querys
                         $this->db->query($strSQL);
                         $this->db->query($salescomissionSQL);
