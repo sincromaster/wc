@@ -74,7 +74,6 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
 <?php if ($categories) { ?>
 <div id="menu">
   <ul>
-    <li><a href="como-funciona">Como funciona</a></li>
     <?php foreach ($categories as $category) { ?>
     <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
       <?php if ($category['children']) { ?>
@@ -93,9 +92,6 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
       <?php } ?>
     </li>
     <?php } ?>
-    <!--<li><a href="meu-pacote-ideal">Meu pacote ideal</a></li>-->
-    <li><a href="agende-um-servico">Agende um serviço</a></li>
-    <li class="noBg"><a href="servicos-avulsos">Serviços Avulsos</a></li>
   </ul>
 </div>
 <?php } ?>

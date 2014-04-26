@@ -215,12 +215,14 @@
 
                 $this->db->query('INSERT INTO ' . DB_PREFIX . 'substores_order_product VALUES(' . $order_id . ', ' . $product_id . ', ' . $store_id . ', ' . $desconto . ' )');
                 
-                $comission = $this->db->query('SELECT sales_commission
-                    FROM wecare.oc_store_sales_commission sc
+                $comission = $this->db->query('SELECT sales_comission
+                    FROM ' . DB_PREFIX . 'store_sales_comission sc
                     WHERE sc.product_id = ' . $product_id . ' AND store_id = ' . $store_id);
-                
-                $this->db->query('INSERT INTO ' . DB_PREFIX . 'store_sales_commission_request VALUES (' . $order_id . ', ' . $store_id . ', ' . $product_id . ', ' . $comission->row['sales_commission'] . ', ' . time() . ')');
-                
+
+                if($comission->num_rows > 0) {
+
+                $this->db->query('INSERT INTO ' . DB_PREFIX . 'store_sales_comission_request VALUES (' . $order_id . ', ' . $store_id . ', ' . $product_id . ', ' . $comission->row['sales_comission'] . ', ' . time() . ')');
+                }
             }
             ]]></add>
         </operation>

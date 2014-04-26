@@ -15,7 +15,7 @@
 <div style="width: 680px;">
 
   <!--<div style="float: right; margin-left: 20px;"><a href="<?php echo $store_url; ?>" title="<?php echo $store_name; ?>"><img src="<?php echo $image; ?>" alt="<?php echo $store_name; ?>" style="margin-bottom: 20px; border: none;" /></a></div>-->
-  <div><a href="<?php echo $store_url; ?>" title="<?php echo $store_name; ?>"><img src="http://www.wecareauto.com.br/image/logo-cabecalho.gif" alt="<?php echo $store_name; ?>" style="margin-bottom: 20px; border: none;" /></a></div>
+  <div><a href="<?php echo $store_url; ?>" title="<?php echo $store_name; ?>"><img src="/image/logo-cabecalho.gif" alt="<?php echo $store_name; ?>" style="margin-bottom: 20px; border: none;" /></a></div>
 
   <div>
 

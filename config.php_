@@ -1,0 +1,27 @@
+<?php
+// HTTP
+define('HTTP_SERVER', 'http://www.ecommercedobrasil.com/masterbrands/');
+
+// HTTPS
+define('HTTPS_SERVER', 'http://www.ecommercedobrasil.com/masterbrands/');
+
+// DIR
+define('DIR_APPLICATION', '/home/ecommerc/public_html/masterbrands/catalog/');
+define('DIR_SYSTEM', '/home/ecommerc/public_html/masterbrands/system/');
+define('DIR_DATABASE', '/home/ecommerc/public_html/masterbrands/system/database/');
+define('DIR_LANGUAGE', '/home/ecommerc/public_html/masterbrands/catalog/language/');
+define('DIR_TEMPLATE', '/home/ecommerc/public_html/masterbrands/catalog/view/theme/');
+define('DIR_CONFIG', '/home/ecommerc/public_html/masterbrands/system/config/');
+define('DIR_IMAGE', '/home/ecommerc/public_html/masterbrands/image/');
+define('DIR_CACHE', '/home/ecommerc/public_html/masterbrands/system/cache/');
+define('DIR_DOWNLOAD', '/home/ecommerc/public_html/masterbrands/download/');
+define('DIR_LOGS', '/home/ecommerc/public_html/masterbrands/system/logs/');
+
+// DB
+define('DB_DRIVER', 'mysql');
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'ecommerc_antonio');
+define('DB_PASSWORD', 'fra1520');
+define('DB_DATABASE', 'ecommerc_masterbrands');
+define('DB_PREFIX', 'oc_');
+?>
