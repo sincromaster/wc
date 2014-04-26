@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+    <link href="css/bootstrap.theme.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/under-construction.css" rel="stylesheet" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <title>WeCare Auto</title>    
+</head>
+
+<body>
+
+<script>
+	function valida_campos(){
+	
+	if(document.getElementById("nome").value == ''){
+		alert("Campo ( NOME ) é obrigatório!!");
+		document.getElementById("nome").focus();
+		return false;
+	}
+	
+	if(document.getElementById("email").value == ''){
+		alert("Campo ( E-MAIL ) é obrigatório!!");
+		document.getElementById("email").focus();			
+		return false;
+	}else{
+	
+		if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value))){ 
+			alert("Favor informar um E-MAIL válido.");
+			document.getElementById("email").focus();
+			var erro = "sim";				
+			return false;
+		} 	
+	}
+
+
+	if(document.getElementById("mensagem").value == ''){
+		alert("Campo ( Mensagem ) é obrigatório!!");
+		document.getElementById("mensagem").focus();			
+		return false;
+	}
+	}
+</script>
+
+    <div class="container-fluid">
+    
+		<div class="row-fluid">
+            <div class="span6 offset3">
+                <div class="row-fluid" style="margin-bottom: 45px;">
+                    <div class="span12">
+                        <a href="index.html" id="site-logo"><img src="img/logo.png" alt=""/></a>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span5">
+                        <p class="announcement title">
+                            Mais cuidado para o seu carro.<br/>Mais tempo pra você.</p>
+                        <p class="announcement">Estamos trabalhando no desenvolvimento do nosso site.</p>
+                        <p class="announcement">Utilize o formulário para entrar em contato conosco. Você será avisado assim que o site estiver pronto. Será um prazer receber sua visita.</p>
+                    </div>
+                    <div class="span6 offset1">
+                        <form name="cadastro" id="message" method="post" action="http://www.rafaelbianco.com/rbmail.php">
+                         <input type="hidden" name="recipient" value="falecom@wecareauto.com.br, cintia.machado@wecareauto.com.br">
+                         <input type="hidden" name="redirect" value="http://www.wecareauto.com.br">
+                         <input type="hidden" name="subject" value="Formulário do site WeCare Auto">
+                 
+                            <div class="input-prepend">
+                                <span class="add-on"><span class="icon-user"></span></span>
+                                <input class="span6" id="nome" name="nome" type="text" data-default="Digite seu nome..." />
+                            </div>
+                            <div class="input-prepend">
+                                <span class="add-on"><span class="icon-envelope-alt"></span></span>
+                                <input class="span6" id="email" name="email" type="text" data-default="Seu e-mail..."/>
+                            </div>
+                            <div class="input-prepend">
+                                <span class="add-on"><span class="icon-phone"></span></span>
+                                <input class="span6" id="telefone" name="telefone" type="text" data-default="Seu telefone (com DDD)..."/>
+                            </div>
+                            <div class="input-prepend">
+                                <span class="add-on bigger"><span class="icon-comment"></span></span>
+                                <textarea class="span6" id="mensagem" name="mensagem" data-default="Deixe sua mensagem..."></textarea>
+                            </div>
+                            <button type="submit" name="acao" value="enviar" class="btn btn-wecare btn-small pull-right" onclick="return valida_campos();">enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+        
+    </div><!--/.fluid-container-->
+    
+    <!-- javascript
+    ================================================== -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>    
+    <script src="js/jquery.maskedInput.min.js" type="text/javascript"></script>    
+    <script src="js/core.js" type="text/javascript"></script>
+
+</body>
+</html>

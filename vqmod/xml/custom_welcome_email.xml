@@ -18,7 +18,7 @@
   <operation>
 		<search position="after"><![CDATA[$subject = sprintf($this->language->get('text_subject'), $this->config->get('config_name'));]]></search>
 		<add><![CDATA[
-    $message = '<p><a href="' . HTTP_SERVER . '" title="' . HTTP_SERVER . '"><img src="http://www.wecareauto.com.br/image/logo-cabecalho.gif" style="border:0;" /></a></p><br>';
+    $message = '<p><a href="' . HTTP_SERVER . '" title="' . HTTP_SERVER . '"><img src="/image/logo-cabecalho.gif" style="border:0;" /></a></p><br>';
     ]]></add>
 	</operation>
   <operation>

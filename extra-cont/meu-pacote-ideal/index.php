@@ -3,13 +3,13 @@ ob_start();
 
 	IF( $_POST['tipo'] == 'pessoa_fisica' ){
 
-		$LinkPessoaFisica01 = "http://www.wecareauto.com.br/para-voce/wecare-familia";
-		$LinkPessoaFisica02 = "http://www.wecareauto.com.br/para-voce/wecare-medico";
-		$LinkPessoaFisica03 = "http://www.wecareauto.com.br/para-voce/wecare-executivo";
-		$LinkPessoaFisica04 = "http://www.wecareauto.com.br/para-voce/wecare-plus";
-		$LinkPessoaFisica05 = "http://www.wecareauto.com.br/para-voce/wecare-day-by-day";
-		$LinkPessoaFisica06 = "http://www.wecareauto.com.br/para-voce/wecare-plus";
-		$LinkPessoaFisica07 = "http://www.wecareauto.com.br/para-voce/wecare-plus";
+		$LinkPessoaFisica01 = "/para-voce/wecare-familia";
+		$LinkPessoaFisica02 = "/para-voce/wecare-medico";
+		$LinkPessoaFisica03 = "/para-voce/wecare-executivo";
+		$LinkPessoaFisica04 = "/para-voce/wecare-plus";
+		$LinkPessoaFisica05 = "/para-voce/wecare-day-by-day";
+		$LinkPessoaFisica06 = "/para-voce/wecare-plus";
+		$LinkPessoaFisica07 = "/para-voce/wecare-plus";
 
 		// 01
 		if( ( $_POST['pergunta01'] == 'sim' ) AND ( $_POST['pergunta02'] == 'sim' OR $_POST['pergunta02']  == 'nao' ) AND ( $_POST['pergunta03'] == 'sim' OR $_POST['pergunta03'] == 'nao' ) AND ( $_POST['pergunta04'] == 'menos-30' OR $_POST['pergunta04'] == '30-ou-mais' ) AND ( $_POST['pergunta05'] == 'sim' OR $_POST['pergunta05']   == 'nao' ) ){
@@ -63,9 +63,9 @@ ob_start();
 	}elseif( $_POST['tipo'] == 'pessoa_juridica' ) {
 	
 	
-		$LinkPessoaJuridica01 = "http://www.wecareauto.com.br/para-sua-empresa/wecare-private";
-		$LinkPessoaJuridica02 = "http://www.wecareauto.com.br/para-sua-empresa/wecare-comfort";
-		$LinkPessoaJuridica03 = "http://www.wecareauto.com.br/para-sua-empresa/wecare-fit";
+		$LinkPessoaJuridica01 = "/para-sua-empresa/wecare-private";
+		$LinkPessoaJuridica02 = "/para-sua-empresa/wecare-comfort";
+		$LinkPessoaJuridica03 = "/para-sua-empresa/wecare-fit";
 		
 		if( ( $_POST['pergunta07'] == 'alem-disso' ) AND ( $_POST['pergunta06'] == 'sim' OR $_POST['pergunta06'] == 'nao' ) ){
 			

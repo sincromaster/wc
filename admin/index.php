@@ -13,9 +13,8 @@ if (!defined('DIR_APPLICATION')) {
 	exit;
 }
 
-
 //VirtualQMOD
-require_once(getcwd() . '/vqmod/vqmod.php');
+require_once('../vqmod/vqmod.php');
 $vqmod = new VQMod();
 
 // VQMODDED Startup

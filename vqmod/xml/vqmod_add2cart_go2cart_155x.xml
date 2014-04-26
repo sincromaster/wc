@@ -14,25 +14,25 @@
 <file name="catalog/view/theme/*/template/product/product.tpl">
 	<operation>
 		<search position="after"><![CDATA[$('html, body').animate({ scrollTop: 0 }, 'slow');]]></search>
-		<add><![CDATA[window.location.href = 'http://www.wecareauto.com.br/index.php?route=checkout/cart';  // Added by Best-Byte //]]></add>
+		<add><![CDATA[window.location.href = '/index.php?route=checkout/cart';  // Added by Best-Byte //]]></add>
 	</operation>
 </file>
 <file name="catalog/view/theme_mobile/opmex/template/product/product.tpl">
 	<operation>
 		<search position="after"><![CDATA[$('html, body').animate({ scrollTop: 0 }, 'slow');]]></search>
-		<add><![CDATA[window.location.href = 'http://www.wecareauto.com.br/index.php?route=checkout/cart';  // Added by Best-Byte //]]></add>
+		<add><![CDATA[window.location.href = '/index.php?route=checkout/cart';  // Added by Best-Byte //]]></add>
 	</operation>
 </file>
 <file name="catalog/view/theme_mobile/omtex-mobile/template/product/product.tpl">
 	<operation>
 		<search position="after"><![CDATA[$('html, body').animate({ scrollTop: 0 }, 'slow');]]></search>
-		<add><![CDATA[window.location.href = 'http://www.wecareauto.com.br/index.php?route=checkout/cart';  // Added by Best-Byte //]]></add>
+		<add><![CDATA[window.location.href = '/index.php?route=checkout/cart';  // Added by Best-Byte //]]></add>
 	</operation>
 </file>
 <file name="catalog/view/theme_tablet/omtex-tablet/template/product/product.tpl">
 	<operation>
 		<search position="after"><![CDATA[$('html, body').animate({ scrollTop: 0 }, 'slow');]]></search>
-		<add><![CDATA[window.location.href = 'http://www.wecareauto.com.br/index.php?route=checkout/cart';  // Added by Best-Byte //]]></add>
+		<add><![CDATA[window.location.href = '/index.php?route=checkout/cart';  // Added by Best-Byte //]]></add>
 	</operation>
 </file>							
 </modification>
