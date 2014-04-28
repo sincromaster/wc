@@ -22,6 +22,8 @@ class ControllerAgendaAgenda extends Controller {
         'separator' => $this->language->get('text_separator')
     );
 
+    $this->document->addScript('catalog/view/javascript/jquery.maskedinput-1.3.min.js');
+    $this->document->addScript('catalog/view/javascript/agenda.js');
     $this->document->addStyle('catalog/view/theme/default/stylesheet/agenda/agenda.css');
 
     $this->data['form']['action'] = $this->url->link('agenda/agenda/save');

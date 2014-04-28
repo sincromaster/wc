@@ -2,79 +2,192 @@
 #agenda-bottom {height: 450px}
 
 .box-topo-left, .box-topo-right {
-  height: 160px;
+    height: 160px;
 }
 
 .box-topo-left, .box-bottom-left { 
-  float: left; 
-  width: 320px;
+    float: left; 
+    width: 320px;
 }
 
 .box-topo-right, .box-bottom-right { 
-  float:left; 
-  width: 560px; 
+    float:left; 
+    width: 560px; 
 }
 
 .box-topo-right {
-  margin-left: 15px;
-  font-family: 'Titillium Web', sans-serif;
-  font-size: 18px;
-  color: #22355d;
-  -webkit-font-smoothing: antialiased;
-  text-shadow: #22355d 0px 0px .5px;
+    margin-left: 15px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 18px;
+    color: #22355d;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: #22355d 0px 0px .5px;
 }
 
 .box-bottom-left {
-  border-radius: 10px;
-  margin-top: 5px;
-  background: #22355d;
-  box-shadow: 3px 3px 5px gray;
+    border-radius: 10px;
+    margin-top: 5px;
+    background: #22355d;
+    box-shadow: 3px 3px 5px gray;
+    padding: 45px 0;
+    margin: 30px 0 0;
 }
 
 .box-bottom-left p {
-  margin-left: 90px;
-  color: white;
-  font-family: 'Titillium Web', sans-serif;
-  font-size: 18px;
-  -webkit-font-smoothing: antialiased;
-  text-shadow: #22355d 0px 0px .5px;
+    margin-left: 90px;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: #22355d 0px 0px .5px;
 }
 
 .box-bottom-left ul li{
-  text-align: left;
-  line-height: 15px;
-  margin-left: 55px;
-  color: white;
-  font-family: 'Titillium Web', sans-serif;
-  font-size: 15px;
-  margin-top: 5px;
-  -webkit-font-smoothing: antialiased;
-  text-shadow: #22355d 0px 0px .5px;
+    text-align: left;
+    line-height: 15px;
+    margin-left: 55px;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+    margin-top: 5px;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: #22355d 0px 0px .5px;
 }
 
 .box-bottom-right {
-  margin-left: 15px;
+    margin-left: 15px;
 
 }
 
-.txtBox {
-  float: left;
-  height: 27px;
-  color: #22355d;
-  background: none;
-  border: none;
-  padding: 2px 5px;
-  font-size: 15px;
-  font-family: 'Titillium Web', sans-serif;
-  outline: none;
-  vertical-align: middle;
+::-webkit-input-placeholder {
+   color: #22355d;
 }
 
-.label_txt {
-  float: left;
-  background: #ddd482;
-  border-radius: 5px;
-  margin-top: 5px;
-  box-shadow: 3px 3px 5px #8e8954 inset;
-  color: #22355d;
+:-moz-placeholder { /* Firefox 18- */
+   color: #22355d;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #22355d;  
+}
+
+:-ms-input-placeholder {  
+   color: #22355d;  
+}
+
+.box-bottom-right form h3 {
+    text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+    float: left;
+    clear: both;
+    display: block;
+    width: 100%;
+    color: #22355d;
+    text-shadow: #22355d 0px 0px .5px;
+    margin-bottom: 0;
+}
+
+.box-bottom-right form input[type=submit] {
+    float: right;
+    margin: 0 15px 0 0;
+    background: none;
+    border: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #22355d;
+    font-family: 'Titillium Web', sans-serif;
+    cursor: pointer;
+    background: transparent url('http://www.60diasgratisdewecareauto.com/images/bt-enviar.png') no-repeat;
+    background: transparent url('http://www.60diasgratisdewecareauto.com/images/bt-enviar.png') no-repeat right 10px;
+    padding-right: 20px;
+}
+
+.box-bottom-right form input.txtBox.error,
+.box-bottom-right form select.txtBox.error {
+    background: #FFE5E5;
+    box-shadow: 3px 3px 5px #ACACAC inset;
+}
+
+.box-bottom-right form input.txtBox,
+.box-bottom-right form select.txtBox {
+    background: #ddd482;
+    height: 27px;
+    color: #22355d;
+    border: none;
+    font-size: 14px;
+    font-family: 'Titillium Web', sans-serif;
+    border-radius: 5px;
+    margin: 0;
+    width: 100%;
+    padding: 0 10px;
+    box-shadow: 3px 3px 5px #8e8954 inset;
+}
+
+.box-bottom-right form .form-item {
+    float: left;
+    margin: 0 25px 10px 0;
+}
+.box-bottom-right form .form-item.select {
+    float: left;
+    margin: 0 0 10px 0;
+    padding: 0 5px;
+}
+    
+.box-bottom-right form .form-item.size10 {
+    width: 100%;
+}
+
+.box-bottom-right form .form-item.size9 {
+    width: 90%;
+}
+
+.box-bottom-right form .form-item.size8 {
+    width: 80%;
+}
+
+.box-bottom-right form .form-item.size7 {
+    width: 70%;
+}
+
+.box-bottom-right form .form-item.size6 {
+    width: 60%;
+}
+
+.box-bottom-right form .form-item.size55 {
+    width: 55%;
+}
+
+.box-bottom-right form .form-item.size5 {
+    width: 50%;
+}
+
+.box-bottom-right form .form-item.size45 {
+    width: 45%;
+}
+
+.box-bottom-right form .form-item.size4 {
+    width: 40%;
+}
+
+.box-bottom-right form .form-item.size3 {
+    width: 30%;
+}
+
+.box-bottom-right form .form-item.size3 {
+    width: 30%;
+}
+
+.box-bottom-right form .form-item.size25 {
+    width: 25%;
+}
+
+.box-bottom-right form .form-item.size2 {
+    width: 20%;
+}
+
+.box-bottom-right form .form-item.size15 {
+    width: 15%;
+}
+.box-bottom-right form .form-item.size1 {
+    width: 10%;
 }
