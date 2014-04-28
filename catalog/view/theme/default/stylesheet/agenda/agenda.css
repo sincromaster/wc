@@ -1,0 +1,80 @@
+#agenda-topo {height: 160px}
+#agenda-bottom {height: 450px}
+
+.box-topo-left, .box-topo-right {
+  height: 160px;
+}
+
+.box-topo-left, .box-bottom-left { 
+  float: left; 
+  width: 320px;
+}
+
+.box-topo-right, .box-bottom-right { 
+  float:left; 
+  width: 560px; 
+}
+
+.box-topo-right {
+  margin-left: 15px;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 18px;
+  color: #22355d;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: #22355d 0px 0px .5px;
+}
+
+.box-bottom-left {
+  border-radius: 10px;
+  margin-top: 5px;
+  background: #22355d;
+  box-shadow: 3px 3px 5px gray;
+}
+
+.box-bottom-left p {
+  margin-left: 90px;
+  color: white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: #22355d 0px 0px .5px;
+}
+
+.box-bottom-left ul li{
+  text-align: left;
+  line-height: 15px;
+  margin-left: 55px;
+  color: white;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 15px;
+  margin-top: 5px;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: #22355d 0px 0px .5px;
+}
+
+.box-bottom-right {
+  margin-left: 15px;
+
+}
+
+.txtBox {
+  float: left;
+  height: 27px;
+  color: #22355d;
+  background: none;
+  border: none;
+  padding: 2px 5px;
+  font-size: 15px;
+  font-family: 'Titillium Web', sans-serif;
+  outline: none;
+  vertical-align: middle;
+}
+
+.label_txt {
+  float: left;
+  background: #ddd482;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-shadow: 3px 3px 5px #8e8954 inset;
+  color: #22355d;
+}

@@ -1,4 +1,8 @@
 <?php
+
+
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 // Version
 define('VERSION', '1.5.5.1');
 
@@ -14,7 +18,7 @@ if (!defined('DIR_APPLICATION')) {
 }
 
 //VirtualQMOD
-require_once('../vqmod/vqmod.php');
+require_once(DIR_VQMOD .'vqmod.php');
 $vqmod = new VQMod();
 
 // VQMODDED Startup

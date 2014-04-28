@@ -24,6 +24,7 @@ define('DIR_CACHE', $dir . '/system/cache/');
 define('DIR_DOWNLOAD', $dir . '/download/');
 define('DIR_LOGS', $dir . '/system/logs/');
 define('DIR_CATALOG', $dir . '/catalog/');
+define('DIR_VQMOD', $dir . '/vqmod/');
 
 // DB
 define('DB_DRIVER', 'mysql');
