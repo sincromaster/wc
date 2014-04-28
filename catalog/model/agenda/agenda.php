@@ -4,11 +4,8 @@ class ModelAgendaAgenda extends Model {
 
   public function saveAgenda($data) {
     
-    var_dump($data);exit;
-
-    $this->db->query("INSERT INTO oc_agenda_gratis
+    $result = $this->db->query("INSERT INTO oc_agenda_gratis
       (
-      
         nome,
         cpf,
         cnpj,
@@ -30,13 +27,35 @@ class ModelAgendaAgenda extends Model {
         km_ultima_revisao,
         regiao_circulacao,
         tipo_de_veiculo     
-        
       ) VALUES (
-        ".$data['adasdasd']."
-
+        '".$data['nome']."',
+        ".$data['cpf'].",
+        ".$data['cnpj'].",
+        '".$data['email']."',
+        ".$data['ddd'].",
+        ".$data['telefone'].",
+        '".$data['endereco']."',
+        '".$data['endereco_numero']."',
+        '".$data['endereco_complemento']."',
+        ".$data['endereco_cep'].",
+        '".$data['placa']."',
+        '".$data['placa_uf']."',
+        '".$data['placa_cidade']."',
+        ".$data['vencimento_cnh'].",
+        ".$data['renavan'].",
+        ".$data['vencimento_seguro'].",
+        ".$data['km_atual'].",
+        ".$data['km_dia'].",
+        ".$data['km_ultima_revisao'].",
+        '".$data['regiao_circulacao']."',
+        '".$data['tipo_de_veiculo']."'
       )"
     );
+    
+    return $result;
   }
+  
+  
 
 }
 ?>

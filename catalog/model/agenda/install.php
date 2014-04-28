@@ -6,7 +6,7 @@ class ModelSubstoresInstall extends Model {
 
     $tabela_agenda = '
       CREATE TABLE oc_agenda_gratis (
-        agenda_id        INT              NOT NULL,
+        agenda_id        INT              NOT NULL  AUTO_INCREMENT,
         nome             VARCHAR(255)     NOT NULL,
         cpf              VARCHAR(255)     NOT NULL,
         cnpj             VARCHAR(255)     NOT NULL,
