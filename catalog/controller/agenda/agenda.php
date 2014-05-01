@@ -208,6 +208,9 @@ class ControllerAgendaAgenda extends Controller {
     }
     //enviamos os dados a model para poder salvar
     $return = $this->model_agenda_agenda->saveAgenda($dados);
+    
+    $this->agendaSendMail($dados['email']);
+    
     if ($return) {
       $this->redirect($this->url->link('agenda/agenda'));
     }
@@ -309,6 +312,71 @@ class ControllerAgendaAgenda extends Controller {
 
       return $cnpj;
     }
+  }
+
+  /**
+   * função responsavel pelo envio de e-mail
+   * @param type $email
+   */
+  public function agendaSendMail($email) {
+
+    //adiciona classe phpmailer
+    require_once("PHPMailer/class.phpmailer.php");
+
+    $message = "<table width='320px' style='color:#22355d'>";
+    $message .= "<tr><td><img src='http://wecareauto.com.br/image/logo-cabecalho.jpg' /></td></tr>";
+    $message .= "<tr>
+                  <td>
+                    <br /><br />
+                    <p>Olá,</p>
+                    <p>
+                      Este e-mail é uma confirmação da sua inscrição na <b>Agenda Grátis WeCare Auto.</b><br />
+                      Desde já agradecemos a sua participação e interesse em nossos serviços.<br />
+                      Em breve um de nossos Especialistas entrará em contato para colher as informações 
+                      complementares necessárias para geração completa da Agenda do Automóvel.<br />
+                      <b><p>Atenciosamente,<br />Equipe WeCare Auto.</></b>
+                      <p><a href='http://www.wecareauto.com.br'>www.wecareauto.com.br</a><br />
+                      Mais cuidado para o seu carro. Mais tempo pra você.
+                    </p>
+                   </td>
+                  </tr>";
+    $message .="</table>";
+    $message = utf8_decode($message);
+
+    //envio de email
+    $mail = new PHPMailer();
+
+    // utilizamos o envio smtp para envitar que o email seje considerado um spam
+//    $mail->IsSMTP();
+
+    //credenciais de acesso para enviar via SMTP
+//    $mail->Host = 'smtp.office365.com';
+//    $mail->SMTPAuth = true;
+//    $mail->Username = 'admin@wecareauto.com.br';
+//    $mail->Password = 'amilwecare';
+//    $mail->SMTPSecure = 'tls';
+
+    //remetente
+    $mail->From = 'admin@wecareauto.com.br';
+    $mail->FromName = 'Wecare';
+
+    //destinatario
+    $mail->AddAddress($email, $email);
+
+    //dados do e-mail
+    $mail->IsHTML(TRUE);
+    $mail->CharSet = 'iso-8859-1';
+
+    $mail->Subject = "Wecare - Agenda";
+    $mail->Body = $message;
+
+    //validamos se o envio de e-mail foi realizado
+    $envio = $mail->Send();
+    if (!$envio) {
+      echo "E-mail não enviado.<br>";
+      echo "Mensagem de erro: " . var_dump($mail->ErrorInfo);
+      exit;
+    } 
   }
 
 }
