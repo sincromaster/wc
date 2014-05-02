@@ -1,6 +1,12 @@
 #agenda-topo {height: 160px}
 #agenda-bottom {height: 450px}
-
+.message.error {
+    background: #FFDDDD;
+    border-radius: 5px;
+    border: 1px solid #AF3F3F;
+    padding: 5px;
+    color: #AF3F3F;
+}
 .box-topo-left, .box-topo-right {
     height: 160px;
 }
@@ -97,7 +103,6 @@
     color: #22355d;
     font-family: 'Titillium Web', sans-serif;
     cursor: pointer;
-    background: transparent url('http://www.60diasgratisdewecareauto.com/images/bt-enviar.png') no-repeat;
     background: transparent url('http://www.60diasgratisdewecareauto.com/images/bt-enviar.png') no-repeat right 10px;
     padding-right: 20px;
 }

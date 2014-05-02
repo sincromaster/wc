@@ -21,12 +21,42 @@ class ControllerAgendaAgenda extends Controller {
         'href' => $this->url->link('agenda/agenda', '', 'SSL'),
         'separator' => $this->language->get('text_separator')
     );
+    
+    // Define as mensagens
+    if (isset($_SESSION['error'])) {
+
+        $this->data['error_warning'] = $_SESSION['error'];
+        unset($_SESSION['error']);
+    } else {
+
+        $this->data['error_warning'] = '';
+    }
+    
+    // Define as mensagens
+    if (isset($_SESSION['success'])) {
+
+        $this->data['success'] = $_SESSION['success'];
+        unset($_SESSION['success']);
+    } else {
+
+        $this->data['success'] = '';
+    }
 
     $this->document->addScript('catalog/view/javascript/jquery.maskedinput-1.3.min.js');
     $this->document->addScript('catalog/view/javascript/agenda.js');
     $this->document->addStyle('catalog/view/theme/default/stylesheet/agenda/agenda.css');
 
     $this->data['form']['action'] = $this->url->link('agenda/agenda/save');
+    
+    // Define as mensagens
+    if (isset($_SESSION['fields'])) {
+
+        $this->data['fields'] = $_SESSION['fields'];
+        unset($_SESSION['fields']);
+    } else {
+
+        $this->data['fields'] = '';
+    }
 
     $this->template = 'default/template/agenda/agenda.tpl';
 
@@ -50,14 +80,14 @@ class ControllerAgendaAgenda extends Controller {
     $arrPost = $this->request->post;
 
     //validamos o nome
-    if (isset($arrPost['nome'])) {
+    if (!empty($arrPost['nome'])) {
       $dados['nome'] = utf8_decode($arrPost['nome']);
     } else {
-      $error['nome'] = "Nome inválido";
+      $error['nome'] = "Nome obrigatório.";
     }
 
     //valida cpf e cnpj
-    if (isset($arrPost['cpf_cnpj'])) {
+    if (!empty($arrPost['cpf_cnpj'])) {
 
       //removemos todos os caracteres
       $numeros = preg_replace("/[^0-9]/", "", $arrPost['cpf_cnpj']);
@@ -77,19 +107,24 @@ class ControllerAgendaAgenda extends Controller {
       $dados['cpf'] = ($cpf != FALSE) ? $cpf : 0;
       $dados['cnpj'] = ($cnpj != FALSE) ? $cnpj : 0;
     } else {
-      $error['cpf_cnpj'] = "CPF ou CNPJ obrigatório";
+      $error['cpf_cnpj'] = "CPF ou CNPJ obrigatório.";
     }
 
     //validamos o e-mail
-    if (isset($arrPost['email']) && filter_var($arrPost['email'], FILTER_VALIDATE_EMAIL)) {
+    if (!empty($arrPost['email'])) {
+        if(filter_var($arrPost['email'], FILTER_VALIDATE_EMAIL)) {
 
-      $dados['email'] = utf8_decode($arrPost['email']);
+            $dados['email'] = utf8_decode($arrPost['email']);
+        } else {
+            
+            $error['email'] = "E-mail inválido";
+        }
     } else {
-      $error['email'] = "E-mail inválido";
+      $error['email'] = "E-mail obrigatório.";
     }
 
     //validações do telefone
-    if (isset($arrPost['telefone'])) {
+    if (!empty($arrPost['telefone'])) {
 
       //deixa somente os numeros
       $telefone = preg_replace("/[^0-9]/", "", $arrPost['telefone']);
@@ -102,31 +137,29 @@ class ControllerAgendaAgenda extends Controller {
       } else {
         $error['telefone'] = "Telefone inválido";
       }
+    } else {
+        
+        $error['telefone'] = "Telefone obrigatório.";
     }
 
     //validacao de endereco
-    if (isset($arrPost['endereco'])) {
+    if (!empty($arrPost['endereco'])) {
       $dados['endereco'] = utf8_decode($arrPost['endereco']);
     } else {
-      $error['endereco'] = "Endereço inválido";
+      $error['endereco'] = "Endereço obrigatório.";
     }
 
     //validamos numero do endereco
-    if (isset($arrPost['numero'])) {
+    if (!empty($arrPost['numero'])) {
       $dados['endereco_numero'] = preg_replace("/[^0-9]/", "", $arrPost['numero']);
     } else {
-      $error['numero'] = "Número inválido";
+      $error['numero'] = "Número obrigatório.";
     }
 
-    //validamos complemento do endereco
-    if (isset($arrPost['complemento'])) {
-      $dados['endereco_complemento'] = utf8_decode($arrPost['complemento']);
-    } else {
-      $dados['complemento'] = NULL;
-    }
-
-    //validamos complemento do endereco
-    if (isset($arrPost['cep'])) {
+    $dados['complemento'] = $arrPost['complemento'];
+    
+    //validamos cep do endereco
+    if (!empty($arrPost['cep'])) {
 
       //somente numeros
       $cep = preg_replace("/[^0-9]/", "", $arrPost['cep']);
@@ -137,32 +170,32 @@ class ControllerAgendaAgenda extends Controller {
         $error['cep'] = "CEP inválido";
       }
     } else {
-      $error['cep'] = "CEP inválido";
+      $error['cep'] = "CEP obrigatório.";
     }
 
     //Validamos a placa
-    if (isset($arrPost['placa'])) {
+    if (!empty($arrPost['placa'])) {
       $dados['placa'] = utf8_decode($arrPost['placa']);
     } else {
-      $error['placa'] = "Placa requirido";
+      $error['placa'] = "Placa obrigatório.";
     }
 
     //validamos o UF da Placa
-    if (isset($arrPost['uf'])) {
+    if (!empty($arrPost['uf'])) {
       $dados['placa_uf'] = utf8_decode($arrPost['uf']);
     } else {
-      $error['uf'] = "Placa UF requirido";
+      $error['uf'] = "Placa UF obrigatório.";
     }
 
     //validamos o cidade da Placa
-    if (isset($arrPost['cidade'])) {
+    if (!empty($arrPost['cidade'])) {
       $dados['placa_cidade'] = utf8_decode($arrPost['cidade']);
     } else {
-      $error['cidade'] = "Placa cidade requirido";
+      $error['cidade'] = "Placa cidade obrigatório.";
     }
 
     //validamos o vencimento da cnh 
-    if (isset($arrPost['cnh'])) {
+    if (!empty($arrPost['cnh'])) {
 
       //convertemos o / para - para poder montar o timestamp
       list($day_cnh, $month_cnh, $year_cnh) = explode('/', $arrPost['cnh']);
@@ -170,41 +203,50 @@ class ControllerAgendaAgenda extends Controller {
 
       $dados['vencimento_cnh'] = $cnh;
     } else {
-      $error['cnh'] = "Vencimento CNH inválidos";
+      $error['cnh'] = "Vencimento CNH obrigatório.";
     }
 
-    //validamos o renavan 
-    if (isset($arrPost['renavam'])) {
-
-      //convertemos o / para - para poder montar o timestamp
-      $renavam = preg_replace("/[^0-9]/", "", $arrPost['renavam']);
-
-      $dados['renavan'] = $renavam;
+    if(!empty($arrPost['vctoSeguro'])) { 
+        $dados['renavan'] = $arrPost['renavam'];
     } else {
-      $error['renavan'] = "Renavan inválido";
+        
+        $dados['renavan'] = 0;
     }
 
-    //validamos o vencimento do seguro 
-    if (isset($arrPost['vctoSeguro'])) {
-
-      //convertemos o / para - para poder montar o timestamp
-      list($day_vctoseguro, $month_vctoseguro, $year_vctoseguro) = explode('/', $arrPost['vctoSeguro']);
-      $vctoSeguro = mktime(0, 0, 0, $month_vctoseguro, $day_vctoseguro, $year_vctoseguro);
-
-      $dados['vencimento_seguro'] = $vctoSeguro;
+    //convertemos o / para - para poder montar o timestamp
+    if(!empty($arrPost['vctoSeguro'])) { 
+        list($day_vctoseguro, $month_vctoseguro, $year_vctoseguro) = explode('/', $arrPost['vctoSeguro']);
+        $vctoSeguro = mktime(0, 0, 0, $month_vctoseguro, $day_vctoseguro, $year_vctoseguro);
+        $dados['vencimento_seguro'] = $vctoSeguro;
     } else {
-      $error['vctoSeguro'] = "Vencimento seguro CNH inválidos";
+        
+        $dados['vencimento_seguro'] = 0;
     }
 
-    $dados['km_atual'] = preg_replace("/[^0-9]/", "", $arrPost['kmatual']);
-    $dados['km_dia'] = preg_replace("/[^0-9]/", "", $arrPost['kmdia']);
-    $dados['km_ultima_revisao'] = preg_replace("/[^0-9]/", "", $arrPost['kmrevisao_l']);
-    $dados['regiao_circulacao'] = ($arrPost['regiao']);
-    $dados['tipo_de_veiculo'] = ($arrPost['tipo']);
+    $dados['km_atual'] = !empty($arrPost['kmatual']) ? preg_replace("/[^0-9]/", "", $arrPost['kmatual']) : 0;
+    $dados['km_dia'] = !empty($arrPost['kmdia']) ? preg_replace("/[^0-9]/", "", $arrPost['kmdia']) : 0;
+    $dados['km_ultima_revisao'] = !empty($arrPost['kmrevisao_l']) ? preg_replace("/[^0-9]/", "", $arrPost['kmrevisao_l']) : 0;
+    
+    //validamos a regiao
+    if (!empty($arrPost['regiao'])) {
+        
+        $dados['regiao_circulacao'] = ($arrPost['regiao']);
+    } else {
+        $error['regiao'] = 'Região de circulação obrigatório.';
+    }
+    
+    //validamos o tipo de veiculo
+    if (!empty($arrPost['tipo'])) {
+        
+        $dados['tipo_de_veiculo'] = ($arrPost['tipo']);
+    } else {
+        $error['tipo'] = 'Tipo de veículo obrigatório.';
+    }
 
     if (count($error) > 0) {
-      var_dump($error);
-      exit;
+        $_SESSION['error'] = implode('<br />', $error);
+        $_SESSION['fields'] = serialize($arrPost);
+        $this->redirect($this->url->link('agenda/agenda'));
     }
     //enviamos os dados a model para poder salvar
     $return = $this->model_agenda_agenda->saveAgenda($dados);

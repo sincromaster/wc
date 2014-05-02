@@ -5,7 +5,7 @@ $(document).ready(function() {
     jQuery('#txtUF').mask('aa');
     jQuery('#dtVenctoCNH').mask('99/99/9999');
     jQuery('#dtVenctoSEG').mask('99/99/9999');
-    jQuery('#txtRenavam, #txtKmAtual, #txtKmDia, #txtKmRevisao').keypress(function(e){
+    jQuery('#txtCPF, #txtRenavam, #txtKmAtual, #txtKmDia, #txtKmRevisao').keypress(function(e){
         
         return isNumberKey(e);
     })

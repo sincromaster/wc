@@ -3,8 +3,7 @@
 class ModelAgendaAgenda extends Model {
 
   public function saveAgenda($data) {
-    
-    $result = $this->db->query("INSERT INTO oc_agenda_gratis
+       $result = $this->db->query("INSERT INTO " . DB_PREFIX . "agenda_gratis
       (
         nome,
         cpf,
@@ -26,7 +25,8 @@ class ModelAgendaAgenda extends Model {
         km_dia,
         km_ultima_revisao,
         regiao_circulacao,
-        tipo_de_veiculo     
+        tipo_de_veiculo,
+        created
       ) VALUES (
         '".$data['nome']."',
         ".$data['cpf'].",
@@ -48,9 +48,12 @@ class ModelAgendaAgenda extends Model {
         ".$data['km_dia'].",
         ".$data['km_ultima_revisao'].",
         '".$data['regiao_circulacao']."',
-        '".$data['tipo_de_veiculo']."'
+        '".$data['tipo_de_veiculo']."',
+        '".time()."'
       )"
     );
+    
+    $_SESSION['success'] = 'Registro inserido com sucesso.';
     
     return $result;
   }

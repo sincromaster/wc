@@ -30,6 +30,7 @@ class ModelSubstoresInstall extends Model {
         km_ultima_revisao      INT(11)    NULL,
         regiao_circulacao      VARCHAR(255)     NOT NULL,
         tipo_de_veiculo        VARCHAR(255)     NOT NULL,
+        created         INT(11)        NOT NULL,
 
         PRIMARY KEY (agenda_id))
         ';
