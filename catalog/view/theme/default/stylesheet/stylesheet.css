@@ -1,4 +1,4 @@
-html {
+shtml {
 	overflow-y: scroll;
 	margin: 0;
 	padding: 0;
@@ -375,7 +375,8 @@ label {
 	height:36px;
 	padding-top:17px;
 }
-#menu > ul > li:hover > a {
+#menu > ul > li:hover > a,
+#menu > ul > li:last-child > a {
 	background: #273D6D;
 	color:#F3F1D4;
 	/*-webkit-border-radius: 5px;
