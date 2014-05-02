@@ -37,103 +37,96 @@
             <div id="agenda-topo">
 
                 <div class="box-topo-left">
-                    <img src="catalog/view/theme/default/image/agenda/image-topo-left.jpg" />
+                    <img src="catalog/view/theme/default/image/agenda/image-topo-left.png" class="image1" width="150"/>
+                    <img src="catalog/view/theme/default/image/agenda/image-topo-left-2.png" class="image2" width="70"/>
                 </div>
 
                 <div class="box-topo-right">
                     <p>
-                        Com a Agenda Grátis WeCare Auto você fica despreocupado com as<br/>
-                        datas dos compromissos do carro e, se quiser, ainda conta com a<br/>
-                        ajuda de nossos especialistas automotivos adquirindo nossos<br/>
-                        serviços avulsos ou pacotes.<br/>
+                        Com a <strong>Agenda Grátis WeCare Auto</strong> você fica despreocupado com as
+                        datas dos compromissos do carro.<br/>
                     </p>
-                    <p>Para usufruir da Agenda Grátis, basta preencher os dados abaixo:</p>
+                    <p><strong>Você só precisa preencher os dados abaixo para receber os alertas em seu e-mail.<br />Simples assim.</strong></p>
                 </div>
             </div>
 
             <div id="agenda-bottom">
 
-                <div class="box-bottom-left">
-
-                    <div id="figura2">
-                        <p>Alertas sobre:</p>
-                        <ul>
-                            <li>IPVA</li>
-                            <li>DPVAT</li>
-                            <li>Revisões</li>
-                            <li>Licenciamento</li>
-                            <li>Renovação da CNH</li>
-                            <li>Inspeção Veicular</li>
-                            <li>Vencimento do Seguro</li>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="box-bottom-right">
 
                     <form action="<?php echo $form['action']; ?>" method="post">
                         <h3>Seus dados:</h3>
-                        <div class="form-item size7">
-                            <input type="text" class="txtBox required" name="nome" placeholder="* Nome Completo" minlength="2" maxlength="72" autocomplete="off" value="<?php echo $fields['nome']; ?>">
+                        <div class="form-item size67">
+                            <input type="text" class="txtBox required" name="nome" title="Digite seu nome completo." placeholder="* Nome Completo" minlength="2" maxlength="72" autocomplete="off" value="<?php echo $fields['nome']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" id="txtCPF required" class="txtBox" name="cpf_cnpj" placeholder="* CPF ou CNPJ" minlength="14" maxlength="18" autocomplete="off" value="<?php echo $fields['cpf_cnpj']; ?>">
+                            <input type="text" id="txtCPF required" title="Digite seu CPF. Em caso de Pessoa Jurídica, digite o CNPJ da empresa. Não é necessário colocar pontos ou hífen." class="txtBox" name="cpf_cnpj" placeholder="* CPF ou CNPJ" minlength="14" maxlength="18" autocomplete="off" value="<?php echo $fields['cpf_cnpj']; ?>">
                         </div>
                         <div class="form-item size6">
-                            <input type="email" id="txtEmail required" class="txtBox" name="email" placeholder="* E-mail" value="<?php echo $fields['email']; ?>">
+                            <input type="email" id="txtEmail required" class="txtBox" title="Digite seu e-mail e confira. Esta informação será muito importante para a gente se comunicar com você." name="email" placeholder="* E-mail" value="<?php echo $fields['email']; ?>">
                         </div>
-                        <div class="form-item size3">
-                            <input type="text" id="txtTelefone required" class="txtBox" name="telefone" placeholder="* Telefone com DDD" minlength="14" maxlength="15" autocomplete="off" value="<?php echo $fields['telefone']; ?>">
+                        <div class="form-item size27">
+                            <input type="text" id="txtTelefone required" class="txtBox" title="Digite seu telefone com DDD." name="telefone" placeholder="* Telefone com DDD" minlength="14" maxlength="15" autocomplete="off" value="<?php echo $fields['telefone']; ?>">
                         </div>
 
                         <h3>Seu endereço:</h3>
                         <div class="form-item size45">
-                            <input type="text" class="txtBox required" name="endereco" placeholder="* Rua, praça ou avenida" minlength="3" value="<?php echo $fields['endereco']; ?>">
+                            <input type="text" class="txtBox required" title="Digite o nome da sua rua ou avenida. Ex: Rua Arantes" name="endereco" placeholder="* Rua, praça ou avenida" minlength="3" value="<?php echo $fields['endereco']; ?>">
                         </div>
                         <div class="form-item size1">
-                            <input type="text" class="txtBox required" name="numero" placeholder="* Número" maxlength="8" min="1" value="<?php echo $fields['numero']; ?>">
+                            <input type="text" class="txtBox required" title="Digite o número do seu endereço." name="numero" placeholder="* Número" maxlength="8" min="1" value="<?php echo $fields['numero']; ?>">
                         </div>
                         <div class="form-item size1">
-                            <input type="text" class="txtBox" name="complemento" placeholder="Compl." maxlength="10" value="<?php echo $fields['complemento']; ?>">
+                            <input type="text" class="txtBox" title="Digite o complemento do seu endereço." name="complemento" placeholder="Compl." maxlength="10" value="<?php echo $fields['complemento']; ?>">
                         </div>
                         <div class="form-item size15">
-                            <input type="text" id="txtCep" class="txtBox required" name="cep" placeholder="* CEP" minlength="9" maxlength="9" autocomplete="off" value="<?php echo $fields['cep']; ?>">
+                            <input type="text" id="txtCep" class="txtBox required" title="Digite o seu CEP. Não é necessário colocar hífen." name="cep" placeholder="* CEP" minlength="9" maxlength="9" autocomplete="off" value="<?php echo $fields['cep']; ?>">
                         </div>
 
                         <h3>dados do veículo:</h3>
                         <div class="form-item size2">
-                            <input type="text" id="txtPlaca" class="txtBox required" name="placa" placeholder="* Placa" minlength="8" maxlength="8" autocomplete="off" value="<?php echo $fields['placa']; ?>">
+                            <input type="text" id="txtPlaca" class="txtBox required" title="Digite a placa do seu veículo. Não é necessário colocar hífen." name="placa" placeholder="* Placa" minlength="8" maxlength="8" autocomplete="off" value="<?php echo $fields['placa']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" id="txtUF" class="txtBox required" name="uf" placeholder="* UF Placa" minlength="2" maxlength="2" autocomplete="off" value="<?php echo $fields['uf']; ?>">
+                            <input type="text" id="txtUF" class="txtBox required" title="Digite o estado de emissão da placa do veículo. Ex: SP" name="uf" placeholder="* UF Placa" minlength="2" maxlength="2" autocomplete="off" value="<?php echo $fields['uf']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" class="txtBox required" name="cidade" placeholder="* Cidade Placa" minlength="2" maxlength="50" autocomplete="off" value="<?php echo $fields['cidade']; ?>">
+                            <input type="text" class="txtBox required" name="cidade" title="Digite a cidade de emissão da placa do veículo." placeholder="* Cidade Placa" minlength="2" maxlength="50" autocomplete="off" value="<?php echo $fields['cidade']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" id="dtVenctoCNH" class="txtBox required" name="cnh" placeholder="* Vencto CNH" minlength="2" maxlength="15" autocomplete="off" value="<?php echo $fields['cnh']; ?>">
+                            <input type="text" id="dtVenctoCNH" class="txtBox required" title="Digite a data de vencimento da sua Carteira de Habilitação (DD/MM/AAAA)" name="cnh" placeholder="* Vencto CNH" minlength="2" maxlength="15" autocomplete="off" value="<?php echo $fields['cnh']; ?>">
                         </div>
 
                         <div class="form-item size25">
-                            <input type="text" id="txtRenavam" class="txtBox" name="renavam" placeholder="Renavam" maxlength="11" autocomplete="off" value="<?php echo $fields['renavam']; ?>">
+                            <input type="text" id="txtRenavam" class="txtBox" title="Digite o RENAVAM do seu veículo. Este número você encontra no documento do seu carro." name="renavam" placeholder="Renavam" maxlength="11" autocomplete="off" value="<?php echo $fields['renavam']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" id="dtVenctoSEG" class="txtBox" name="vctoSeguro" placeholder="Vencto Seguro" maxlength="11" autocomplete="off" value="<?php echo $fields['vctoSeguro']; ?>">
+                            <input type="text" id="dtVenctoSEG" class="txtBox" title="Digite a data de vencimento do Seguro do seu veículo (DD/MM/AAAA)." name="vctoSeguro" placeholder="Vencto Seguro" maxlength="11" autocomplete="off" value="<?php echo $fields['vctoSeguro']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" id="txtKmAtual" class="txtBox" name="kmatual" placeholder="KM Atual" maxlength="11" autocomplete="off" value="<?php echo $fields['kmatual']; ?>">
+                            <input type="text" id="txtKmAtual" class="txtBox" title="Digite a quilometragem média que o veículo anda por dia. Exemplo: Some o número de
+                            quilômetros que você gasta indo e voltando do trabalho, ou em qualquer outro percurso diário 
+                            que você realize."name="kmatual" placeholder="KM Atual" maxlength="11" autocomplete="off" value="<?php echo $fields['kmatual']; ?>">
                         </div>
 
                         <div class="form-item size15">
-                            <input type="text" id="txtKmDia" class="txtBox" name="kmdia" placeholder="KM dia" maxlength="11" autocomplete="off" value="<?php echo $fields['kmdia']; ?>">
+                            <input type="text" id="txtKmDia" class="txtBox" title="Digite a quilometragem do dia em que foi realizada a última revisão no veículo. Este dado 
+                            é encontrado no manual do veículo. Caso a última revisão realizada não tenha sido na 
+                            concessionária, basta digitar a quilometragem da última vez em que o veículo passou por uma 
+                            verificação na oficina, trocando itens como óleo e filtros." name="kmdia" placeholder="KM dia" maxlength="11" autocomplete="off" value="<?php echo $fields['kmdia']; ?>">
                         </div>
                         
                         <div class="form-item size25">
-                            <input type="text" id="txtKmRevisao" class="txtBox" name="kmrevisao_l" placeholder="KM última revisão" maxlength="11" autocomplete="off" value="<?php echo $fields['kmrevisao_1']; ?>">
+                            <input type="text" id="txtKmRevisao" class="txtBox" title="Digite a data de quando foi realizada a última revisão no seu veículo. Este dado é encontrado
+                            no manual do veículo. Caso a última revisão realizada não tenha sido na concessionária, basta 
+                            digitar a data da última vez em que o veículo passou por uma verificação na oficina, trocando 
+                            itens como óleo e filtros." name="kmrevisao_l" placeholder="KM última revisão" maxlength="11" autocomplete="off" value="<?php echo $fields['kmrevisao_1']; ?>">
                         </div>
 
-                        <div class="form-item select size4">
-                            <select type="text" class="txtBox required" name="regiao">
+                        <div class="form-item select size39">
+                            <select type="text" class="txtBox required" name="regiao" title="Escolha a região na qual o seu veículo circula. Exemplo: Podem existir veículos com placas de
+                            outros estados que rodam em nossa área de atuação, estes veículos também serão atendidos 
+                            pela WeCare Auto.">
                                 <option value="">* Região de circulação</option>
                                 <option value="sao_paulo" <?php echo $fields['regiao'] == 'sao_paulo' ? 'selected' : null; ?>>São Paulo Capital</option>
                                 <option value="barueri" <?php echo $fields['regiao'] == 'barueri' ? 'selected' : null; ?>>Barueri</option>
@@ -169,9 +162,18 @@
 
             </div>
 
+            <br class="clear" />
+            <div class="agenda-more-info">
+                <p>Participando da <strong>Agenda Grátis</strong>, você recebe os alertas dos compromissos do carro com antecedência e tem tempo para se
+                organizarr e resolver tudo, evitando possíveis multas, apreensões do carro e risco de acidente.</p>
+                <p><strong>Quer ainda mais comodidade?</strong><br />Você pode contar com a ajuda de um especialista automotivo e com nosso serviço
+                    de Leva e Traz. Consulte nossos <a href="/servicos-avulsos"><strong>Serviços Avulsos</strong></a> e descomplique a sua vida.</p>
+            </div>
 
-
-
+                <div class="slogan">
+                    <img src="catalog/view/theme/default/image/agenda/wecare-logo.png" class="image1" width="100"/>
+                    <p>Mais cuidado para o seu carro.<br />Mais tempo para você.</p>
+                </div>
         </div>
 
 

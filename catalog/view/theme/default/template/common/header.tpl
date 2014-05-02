@@ -71,7 +71,7 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
   </div>
   <div class="links"><a href="<?php echo $home; ?>">Home</a>
       <a href="<?php echo $account; ?>"><?php echo $text_account; ?></a>
-      <a href="index.php?route=agenda/agenda">Agenda grátis</a>
+      <a href="agende-um-servico">Agende um serviço</a>
       <a href="area-de-atuacao">Área de atuação</a>
       <a href="sobre-a-wecare-auto">Sobre a WeCare Auto</a>
       <a href="index.php?route=information/contact">Fale Conosco</a><!--<a href="blog">Blog</a>--><span class="telTop">11 3595-5559</span></div>

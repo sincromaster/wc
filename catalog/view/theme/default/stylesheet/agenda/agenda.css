@@ -1,5 +1,6 @@
-#agenda-topo {height: 160px}
-#agenda-bottom {height: 450px}
+br.clear { display: block; clear: both; overflow: hidden; }
+#agenda-topo {height: 160px; margin-bottom: 20px;}
+#agenda-bottom { margin: 0 0 20px; }
 .message.error {
     background: #FFDDDD;
     border-radius: 5px;
@@ -11,17 +12,37 @@
     height: 160px;
 }
 
-.box-topo-left, .box-bottom-left { 
-    float: left; 
-    width: 320px;
+.box-topo-left .image2{ 
+    position: relative;
+    top: -70px;
 }
 
-.box-topo-right, .box-bottom-right { 
+.box-topo-left{ 
+    float: left; 
+    padding: 0 0 0 80px;
+}
+
+.box-topo-right { 
     float:left; 
     width: 560px; 
 }
 
-.box-topo-right {
+.agenda-more-info{
+    margin-top: 30px;
+}
+
+.agenda-more-info a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #22355d;
+}
+
+.agenda-more-info a:hover{
+    text-decoration: underline;
+}
+
+.box-topo-right,
+.agenda-more-info{
     margin-left: 15px;
     font-family: 'Titillium Web', sans-serif;
     font-size: 18px;
@@ -61,8 +82,8 @@
 }
 
 .box-bottom-right {
-    margin-left: 15px;
-
+    margin: 0 auto;
+    width: 75%;
 }
 
 ::-webkit-input-placeholder {
@@ -95,16 +116,15 @@
 
 .box-bottom-right form input[type=submit] {
     float: right;
-    margin: 0 15px 0 0;
-    background: none;
+    margin-right: 50px;
     border: none;
     text-transform: uppercase;
-    font-size: 20px;
-    color: #22355d;
+    font-size: 18px;
+    background: #22355d;
+    border-radius: 5px;
+    color: #fff;
     font-family: 'Titillium Web', sans-serif;
     cursor: pointer;
-    background: transparent url('http://www.60diasgratisdewecareauto.com/images/bt-enviar.png') no-repeat right 10px;
-    padding-right: 20px;
 }
 
 .box-bottom-right form input.txtBox.error,
@@ -134,8 +154,7 @@
 }
 .box-bottom-right form .form-item.select {
     float: left;
-    margin: 0 0 10px 0;
-    padding: 0 5px;
+    margin: 0 5px 10px 0;
 }
     
 .box-bottom-right form .form-item.size10 {
@@ -152,6 +171,10 @@
 
 .box-bottom-right form .form-item.size7 {
     width: 70%;
+}
+
+.box-bottom-right form .form-item.size67 {
+    width: 67%;
 }
 
 .box-bottom-right form .form-item.size6 {
@@ -174,12 +197,16 @@
     width: 40%;
 }
 
-.box-bottom-right form .form-item.size3 {
-    width: 30%;
+.box-bottom-right form .form-item.size39 {
+    width: 39%;
 }
 
 .box-bottom-right form .form-item.size3 {
     width: 30%;
+}
+
+.box-bottom-right form .form-item.size27 {
+    width: 27%;
 }
 
 .box-bottom-right form .form-item.size25 {
@@ -195,4 +222,31 @@
 }
 .box-bottom-right form .form-item.size1 {
     width: 10%;
+}
+
+.tooltip {
+    position: absolute;
+    font-size: 12px;
+    font-family: 'Titillium Web', sans-serif;
+    background: white;
+    z-index: 10;
+    max-width: 500px;
+    box-shadow: 0px 0px 10px #000;
+    border-radius: 3px;
+    padding: 3px;
+    top: 22px;
+    min-width: 180px;
+}
+
+.slogan {
+    padding: 25px 0;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 18px;
+    color: #22355d;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: #22355d 0px 0px .5px;
+}
+.slogan img{
+    float: left;
+    margin: -25px 15px 0 0;
 }

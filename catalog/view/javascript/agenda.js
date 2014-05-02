@@ -28,6 +28,23 @@ $(document).ready(function() {
         
         jQuery(this).removeClass('error');
     });
+    
+    // Tooltip
+    $('input, select').hover(function(){
+        if(typeof $(this).attr('title') !== 'undefined') {
+            $(this).after('<div class="tooltip" style="display: none">' + $(this).attr('title') + '</div>');
+            $(this).parent().css({
+                position: 'relative'
+            });
+            $(this).next().fadeIn();
+        }
+    }, function() {
+        
+        if(typeof $(this).attr('title') !== 'undefined') {
+            $(this).next().fadeOut();
+            $(this).next().remove();
+        }
+    });
 });
 
 function isNumberKey(evt) {
