@@ -1,11 +1,12 @@
 $(document).ready(function() {
 
+    jQuery('#txtTelefone').mask('(99) 99999999?9');
     jQuery('#txtCep').mask('99999-999');
     jQuery('#txtPlaca').mask('aaa-9999');
     jQuery('#txtUF').mask('aa');
     jQuery('#dtVenctoCNH').mask('99/99/9999');
     jQuery('#dtVenctoSEG').mask('99/99/9999');
-    jQuery('#txtCPF, #txtRenavam, #txtKmAtual, #txtKmDia, #txtKmRevisao').keypress(function(e){
+    jQuery('#txtRenavam, #txtKmAtual, #txtKmDia, #txtKmRevisao, #txtCPF').keypress(function(e){
         
         return isNumberKey(e);
     })

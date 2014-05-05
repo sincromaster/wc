@@ -53,12 +53,22 @@ class ModelAgendaAgenda extends Model {
       )"
     );
     
-    $_SESSION['success'] = 'Registro inserido com sucesso.';
+    $_SESSION['success'] = 'Cadastro realizado com sucesso.';
     
     return $result;
   }
   
-  
+  public function getTexts() {
+      
+      $strSQL = 'SELECT ' . DB_PREFIX . 'setting.key, ' . DB_PREFIX . 'setting.value FROM ' . DB_PREFIX . 'setting WHERE ' . DB_PREFIX . 'setting.key IN("agenda_campo_cabecalho", "agenda_campo_rodape")';
 
+      $arrReturn = array();
+      
+      foreach($this->db->query($strSQL)->rows as $row) {
+          $arrReturn[$row['key']] = $row['value'];
+      }
+      
+      return $arrReturn;
+  }
 }
 ?>

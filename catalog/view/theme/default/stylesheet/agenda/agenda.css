@@ -1,5 +1,5 @@
 br.clear { display: block; clear: both; overflow: hidden; }
-#agenda-topo {height: 160px; margin-bottom: 20px;}
+#agenda-topo {margin-bottom: 20px; overflow: hidden;}
 #agenda-bottom { margin: 0 0 20px; }
 .message.error {
     background: #FFDDDD;
@@ -7,9 +7,6 @@ br.clear { display: block; clear: both; overflow: hidden; }
     border: 1px solid #AF3F3F;
     padding: 5px;
     color: #AF3F3F;
-}
-.box-topo-left, .box-topo-right {
-    height: 160px;
 }
 
 .box-topo-left .image2{ 
@@ -41,9 +38,11 @@ br.clear { display: block; clear: both; overflow: hidden; }
     text-decoration: underline;
 }
 
+.box-topo-right{
+    margin: 20px 0 0 15px;
+}
 .box-topo-right,
 .agenda-more-info{
-    margin-left: 15px;
     font-family: 'Titillium Web', sans-serif;
     font-size: 18px;
     color: #22355d;
@@ -234,7 +233,7 @@ br.clear { display: block; clear: both; overflow: hidden; }
     box-shadow: 0px 0px 10px #000;
     border-radius: 3px;
     padding: 3px;
-    top: 22px;
+    top: 30px;
     min-width: 180px;
 }
 

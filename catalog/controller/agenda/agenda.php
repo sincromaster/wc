@@ -46,6 +46,13 @@ class ControllerAgendaAgenda extends Controller {
     $this->document->addScript('catalog/view/javascript/agenda.js');
     $this->document->addStyle('catalog/view/theme/default/stylesheet/agenda/agenda.css');
 
+    $this->load->model('agenda/agenda');
+    
+    $arrTexts = $this->model_agenda_agenda->getTexts();
+    
+    $this->data['text_cabecalho'] = $arrTexts['agenda_campo_cabecalho'];
+    $this->data['text_rodape'] = $arrTexts['agenda_campo_rodape'];
+    
     $this->data['form']['action'] = $this->url->link('agenda/agenda/save');
     
     // Define as mensagens
@@ -132,8 +139,8 @@ class ControllerAgendaAgenda extends Controller {
       if (strlen($telefone) <= 11) {
 
         //montamos os dados de ddd e telefone
-        $dados['ddd'] = substr($arrPost['telefone'], 0, 2);
-        $dados['telefone'] = substr($arrPost['telefone'], 2);
+        $dados['ddd'] = substr($telefone, 0, 2);
+        $dados['telefone'] = substr($telefone, 2);
       } else {
         $error['telefone'] = "Telefone inválido";
       }
@@ -250,7 +257,6 @@ class ControllerAgendaAgenda extends Controller {
     }
     //enviamos os dados a model para poder salvar
     $return = $this->model_agenda_agenda->saveAgenda($dados);
-    
     $this->agendaSendMail($dados['email']);
     
     if ($return) {
@@ -418,7 +424,9 @@ class ControllerAgendaAgenda extends Controller {
       echo "E-mail não enviado.<br>";
       echo "Mensagem de erro: " . var_dump($mail->ErrorInfo);
       exit;
-    } 
+    } else {
+//        $_SESSION['success'] .= '<br />E-mail enviado com sucesso.';
+    }
   }
 
 }

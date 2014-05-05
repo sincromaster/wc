@@ -37,16 +37,12 @@
             <div id="agenda-topo">
 
                 <div class="box-topo-left">
-                    <img src="catalog/view/theme/default/image/agenda/image-topo-left.png" class="image1" width="150"/>
+                    <img src="catalog/view/theme/default/image/agenda/image-topo-left.png" class="image1" width="200"/>
                     <img src="catalog/view/theme/default/image/agenda/image-topo-left-2.png" class="image2" width="70"/>
                 </div>
 
                 <div class="box-topo-right">
-                    <p>
-                        Com a <strong>Agenda Grátis WeCare Auto</strong> você fica despreocupado com as
-                        datas dos compromissos do carro.<br/>
-                    </p>
-                    <p><strong>Você só precisa preencher os dados abaixo para receber os alertas em seu e-mail.<br />Simples assim.</strong></p>
+                    <?php echo html_entity_decode($text_cabecalho); ?>
                 </div>
             </div>
 
@@ -60,13 +56,13 @@
                             <input type="text" class="txtBox required" name="nome" title="Digite seu nome completo." placeholder="* Nome Completo" minlength="2" maxlength="72" autocomplete="off" value="<?php echo $fields['nome']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" id="txtCPF required" title="Digite seu CPF. Em caso de Pessoa Jurídica, digite o CNPJ da empresa. Não é necessário colocar pontos ou hífen." class="txtBox" name="cpf_cnpj" placeholder="* CPF ou CNPJ" minlength="14" maxlength="18" autocomplete="off" value="<?php echo $fields['cpf_cnpj']; ?>">
+                            <input type="text" class="txtBox required" id="txtCPF" title="Digite seu CPF. Em caso de Pessoa Jurídica, digite o CNPJ da empresa. Não é necessário colocar pontos ou hífen." class="txtBox" name="cpf_cnpj" placeholder="* CPF ou CNPJ" minlength="14" maxlength="18" autocomplete="off" value="<?php echo $fields['cpf_cnpj']; ?>">
                         </div>
                         <div class="form-item size6">
-                            <input type="email" id="txtEmail required" class="txtBox" title="Digite seu e-mail e confira. Esta informação será muito importante para a gente se comunicar com você." name="email" placeholder="* E-mail" value="<?php echo $fields['email']; ?>">
+                            <input type="email" id="txtEmail" class="txtBox required" title="Digite seu e-mail e confira. Esta informação será muito importante para a gente se comunicar com você." name="email" placeholder="* E-mail" value="<?php echo $fields['email']; ?>">
                         </div>
                         <div class="form-item size27">
-                            <input type="text" id="txtTelefone required" class="txtBox" title="Digite seu telefone com DDD." name="telefone" placeholder="* Telefone com DDD" minlength="14" maxlength="15" autocomplete="off" value="<?php echo $fields['telefone']; ?>">
+                            <input type="text" id="txtTelefone" class="txtBox required" title="Digite seu telefone com DDD." name="telefone" placeholder="* Telefone com DDD" minlength="14" maxlength="15" autocomplete="off" value="<?php echo $fields['telefone']; ?>">
                         </div>
 
                         <h3>Seu endereço:</h3>
@@ -164,10 +160,7 @@
 
             <br class="clear" />
             <div class="agenda-more-info">
-                <p>Participando da <strong>Agenda Grátis</strong>, você recebe os alertas dos compromissos do carro com antecedência e tem tempo para se
-                organizarr e resolver tudo, evitando possíveis multas, apreensões do carro e risco de acidente.</p>
-                <p><strong>Quer ainda mais comodidade?</strong><br />Você pode contar com a ajuda de um especialista automotivo e com nosso serviço
-                    de Leva e Traz. Consulte nossos <a href="/servicos-avulsos"><strong>Serviços Avulsos</strong></a> e descomplique a sua vida.</p>
+                <?php echo html_entity_decode($text_rodape); ?>
             </div>
 
                 <div class="slogan">
