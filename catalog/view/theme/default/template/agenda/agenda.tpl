@@ -36,12 +36,7 @@
 
             <div id="agenda-topo">
 
-                <div class="box-topo-left">
-                    <img src="catalog/view/theme/default/image/agenda/image-topo-left.png" class="image1" width="200"/>
-                    <img src="catalog/view/theme/default/image/agenda/image-topo-left-2.png" class="image2" width="70"/>
-                </div>
-
-                <div class="box-topo-right">
+                <div class="box-topo">
                     <?php echo html_entity_decode($text_cabecalho); ?>
                 </div>
             </div>
