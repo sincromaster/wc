@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+ * Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
@@ -32,7 +32,7 @@ CKEDITOR.stylesSet.add( 'default', [
 	*/
 
 	{ name: 'Italic Title',		element: 'h2', styles: { 'font-style': 'italic' } },
-	{ name: 'Subtitle',			element: 'h3', styles: { 'color': '#aaa', 'font-style': 'italic' } },
+	{ name: 'Subtitle',		element: 'h3', styles: { 'color': '#aaa', 'font-style': 'italic' } },
 	{
 		name: 'Special Container',
 		element: 'div',
@@ -50,15 +50,14 @@ CKEDITOR.stylesSet.add( 'default', [
 	// (This requires the "stylescombo" plugin)
 	/*
 	{ name: 'Strong',			element: 'strong', overrides: 'b' },
-	{ name: 'Emphasis',			element: 'em'	, overrides: 'i' },
+	{ name: 'Emphasis',		element: 'em'	, overrides: 'i' },
 	{ name: 'Underline',		element: 'u' },
 	{ name: 'Strikethrough',	element: 'strike' },
 	{ name: 'Subscript',		element: 'sub' },
-	{ name: 'Superscript',		element: 'sup' },
+	{ name: 'Superscript',	element: 'sup' },
 	*/
 
-	{ name: 'Marker: Yellow',	element: 'span', styles: { 'background-color': 'Yellow' } },
-	{ name: 'Marker: Green',	element: 'span', styles: { 'background-color': 'Lime' } },
+	{ name: 'Marker',			element: 'span', attributes: { 'class': 'marker' } },
 
 	{ name: 'Big',				element: 'big' },
 	{ name: 'Small',			element: 'small' },
@@ -109,4 +108,3 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Borderless Table',		element: 'table',	styles: { 'border-style': 'hidden', 'background-color': '#E6E6FA' } },
 	{ name: 'Square Bulleted List',	element: 'ul',		styles: { 'list-style-type': 'square' } }
 ]);
-
