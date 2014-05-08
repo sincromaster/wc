@@ -230,6 +230,16 @@ class ControllerAgendaAgenda extends Controller {
         $dados['vencimento_seguro'] = 0;
     }
 
+    //convertemos o / para - para poder montar o timestamp
+    if(!empty($arrPost['dtrevisao_l'])) { 
+        list($day_dtrevisao, $month_dtrevisao, $year_dtrevisao) = explode('/', $arrPost['dtrevisao_l']);
+        $dataRevisao = mktime(0, 0, 0, $month_dtrevisao, $day_dtrevisao, $year_dtrevisao);
+        $dados['dt_ultima_revisao'] = $dataRevisao;
+    } else {
+        
+        $dados['dt_ultima_revisao'] = 0;
+    }
+
     $dados['km_atual'] = !empty($arrPost['kmatual']) ? preg_replace("/[^0-9]/", "", $arrPost['kmatual']) : 0;
     $dados['km_dia'] = !empty($arrPost['kmdia']) ? preg_replace("/[^0-9]/", "", $arrPost['kmdia']) : 0;
     $dados['km_ultima_revisao'] = !empty($arrPost['kmrevisao_l']) ? preg_replace("/[^0-9]/", "", $arrPost['kmrevisao_l']) : 0;
@@ -242,14 +252,6 @@ class ControllerAgendaAgenda extends Controller {
         $error['regiao'] = 'Região de circulação obrigatório.';
     }
     
-    //validamos o tipo de veiculo
-    if (!empty($arrPost['tipo'])) {
-        
-        $dados['tipo_de_veiculo'] = ($arrPost['tipo']);
-    } else {
-        $error['tipo'] = 'Tipo de veículo obrigatório.';
-    }
-
     if (count($error) > 0) {
         $_SESSION['error'] = implode('<br />', $error);
         $_SESSION['fields'] = serialize($arrPost);

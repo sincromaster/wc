@@ -20,7 +20,7 @@
 
     <?php if ($error_warning) { ?>
 
-    <div class="message error"><?php echo $error_warning; ?></div>
+        <div class="message error"><?php echo $error_warning; ?></div>
 
     <?php } ?>
 
@@ -29,7 +29,7 @@
         <div class="success"><?php echo $success; ?></div>
 
     <?php } ?>
-    
+
     <div class="content">
 
         <div id="agenda">
@@ -95,29 +95,23 @@
                             <input type="text" id="dtVenctoSEG" class="txtBox" title="Digite a data de vencimento do Seguro do seu veículo (DD/MM/AAAA)." name="vctoSeguro" placeholder="Vencto Seguro" maxlength="11" autocomplete="off" value="<?php echo $fields['vctoSeguro']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" id="txtKmAtual" class="txtBox" title="Digite a quilometragem média que o veículo anda por dia. Exemplo: Some o número de
-                            quilômetros que você gasta indo e voltando do trabalho, ou em qualquer outro percurso diário 
-                            que você realize."name="kmatual" placeholder="KM Atual" maxlength="11" autocomplete="off" value="<?php echo $fields['kmatual']; ?>">
+                            <input type="text" id="txtKmAtual" class="txtBox" title="Digite a quilometragem média que o veículo anda por dia. Exemplo: Some o número de quilômetros que você gasta indo e voltando do trabalho, ou em qualquer outro percurso diário que você realize."name="kmatual" placeholder="KM Atual" maxlength="11" autocomplete="off" value="<?php echo $fields['kmatual']; ?>">
                         </div>
 
                         <div class="form-item size15">
-                            <input type="text" id="txtKmDia" class="txtBox" title="Digite a quilometragem do dia em que foi realizada a última revisão no veículo. Este dado 
-                            é encontrado no manual do veículo. Caso a última revisão realizada não tenha sido na 
-                            concessionária, basta digitar a quilometragem da última vez em que o veículo passou por uma 
-                            verificação na oficina, trocando itens como óleo e filtros." name="kmdia" placeholder="KM dia" maxlength="11" autocomplete="off" value="<?php echo $fields['kmdia']; ?>">
+                            <input type="text" id="txtKmDia" class="txtBox" title="Digite a quilometragem do dia em que foi realizada a última revisão no veículo. Este dado é encontrado no manual do veículo. Caso a última revisão realizada não tenha sido na concessionária, basta digitar a quilometragem da última vez em que o veículo passou por uma verificação na oficina, trocando itens como óleo e filtros." name="kmdia" placeholder="KM dia" maxlength="11" autocomplete="off" value="<?php echo $fields['kmdia']; ?>">
                         </div>
-                        
+
                         <div class="form-item size25">
-                            <input type="text" id="txtKmRevisao" class="txtBox" title="Digite a data de quando foi realizada a última revisão no seu veículo. Este dado é encontrado
-                            no manual do veículo. Caso a última revisão realizada não tenha sido na concessionária, basta 
-                            digitar a data da última vez em que o veículo passou por uma verificação na oficina, trocando 
-                            itens como óleo e filtros." name="kmrevisao_l" placeholder="KM última revisão" maxlength="11" autocomplete="off" value="<?php echo $fields['kmrevisao_1']; ?>">
+                            <input type="text" id="txtKmRevisao" class="txtBox" title="Digite a quilometragem do dia em que foi realizada a última revisão no veículo. Este dado é encontrado no manual do veículo. Caso a última revisão realizada não tenha sido na concessionária, basta digitar a quilometragem da última vez em que o veículo passou por uma verificação na oficina, trocando itens como óleo e filtros." name="kmrevisao_l" placeholder="KM última revisão" maxlength="11" autocomplete="off" value="<?php echo $fields['kmrevisao_1']; ?>">
+                        </div>
+
+                        <div class="form-item size22">
+                            <input type="text" id="dtRevisao" class="txtBox" title="Digite a data de quando foi realizada a última revisão no seu veículo. Este dado é encontrado no manual do veículo. Caso a última revisão realizada não tenha sido na concessionária, basta digitar a data da última vez em que o veículo passou por uma verificação na oficina, trocando itens como óleo e filtros." name="dtrevisao_l" placeholder="Data da última revisão" maxlength="11" autocomplete="off" value="<?php echo $fields['dtrevisao_1']; ?>">
                         </div>
 
                         <div class="form-item select size39">
-                            <select type="text" class="txtBox required" name="regiao" title="Escolha a região na qual o seu veículo circula. Exemplo: Podem existir veículos com placas de
-                            outros estados que rodam em nossa área de atuação, estes veículos também serão atendidos 
-                            pela WeCare Auto.">
+                            <select type="text" class="txtBox required" name="regiao" title="Escolha a região na qual o seu veículo circula. Exemplo: Podem existir veículos com placas de outros estados que rodam em nossa área de atuação, estes veículos também serão atendidos pela WeCare Auto.">
                                 <option value="">* Região de circulação</option>
                                 <option value="sao_paulo" <?php echo $fields['regiao'] == 'sao_paulo' ? 'selected' : null; ?>>São Paulo Capital</option>
                                 <option value="barueri" <?php echo $fields['regiao'] == 'barueri' ? 'selected' : null; ?>>Barueri</option>
@@ -137,15 +131,6 @@
                             </select>
                         </div>
 
-                        <div class="form-item select size25">
-                            <select type="text" class="txtBox required" name="tipo">
-                                <option value="">* Tipo de veículo</option>
-                                <option value="automovel" <?php echo $fields['tipo'] == 'automovel' ? 'selected' : null; ?>>Automóvel</option>
-                                <option value="suv" <?php echo $fields['tipo'] == 'suv' ? 'selected' : null; ?>>Camioneta/SUV</option>  
-                                <option value="caminhonete" <?php echo $fields['tipo'] == 'caminhonete' ? 'selected' : null; ?>>Caminhonete</option>
-                            </select>
-                        </div>
-
                         <input type="submit" value="Enviar" class="submit">
 
                     </form>
@@ -158,10 +143,10 @@
                 <?php echo html_entity_decode($text_rodape); ?>
             </div>
 
-                <div class="slogan">
-                    <img src="catalog/view/theme/default/image/agenda/wecare-logo.png" class="image1" width="100"/>
-                    <p>Mais cuidado para o seu carro.<br />Mais tempo para você.</p>
-                </div>
+            <div class="slogan">
+                <img src="catalog/view/theme/default/image/agenda/wecare-logo.png" class="image1" width="100"/>
+                <p>Mais cuidado para o seu carro.<br />Mais tempo para você.</p>
+            </div>
         </div>
 
 

@@ -6,11 +6,12 @@ $(document).ready(function() {
     jQuery('#txtUF').mask('aa');
     jQuery('#dtVenctoCNH').mask('99/99/9999');
     jQuery('#dtVenctoSEG').mask('99/99/9999');
+    jQuery('#dtRevisao').mask('99/99/9999');
     jQuery('#txtRenavam, #txtKmAtual, #txtKmDia, #txtKmRevisao, #txtCPF').keypress(function(e){
         
         return isNumberKey(e);
     })
-    jQuery('#dtVenctoCNH, #dtVenctoSEG').datepicker({ dateFormat: 'dd/mm/yy' });
+    jQuery('#dtVenctoCNH, #dtVenctoSEG, #dtRevisao').datepicker({ dateFormat: 'dd/mm/yy' });
     
     jQuery('form').submit(function(){
         
@@ -31,21 +32,21 @@ $(document).ready(function() {
     });
     
     // Tooltip
-    $('input, select').hover(function(){
-        if(typeof $(this).attr('title') !== 'undefined') {
-            $(this).after('<div class="tooltip" style="display: none">' + $(this).attr('title') + '</div>');
-            $(this).parent().css({
-                position: 'relative'
-            });
-            $(this).next().fadeIn();
-        }
-    }, function() {
-        
-        if(typeof $(this).attr('title') !== 'undefined') {
-            $(this).next().fadeOut();
-            $(this).next().remove();
-        }
-    });
+//    $('input, select').hover(function(){
+//        if(typeof $(this).attr('title') !== 'undefined') {
+//            $(this).after('<div class="tooltip" style="display: none">' + $(this).attr('title') + '</div>');
+//            $(this).parent().css({
+//                position: 'relative'
+//            });
+//            $(this).next().fadeIn();
+//        }
+//    }, function() {
+//        
+//        if(typeof $(this).attr('title') !== 'undefined') {
+//            $(this).next().fadeOut();
+//            $(this).next().remove();
+//        }
+//    });
 });
 
 function isNumberKey(evt) {

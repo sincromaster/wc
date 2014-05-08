@@ -39,7 +39,6 @@ br.clear { display: block; clear: both; overflow: hidden; }
     font-size: 18px;
     color: #22355d;
     -webkit-font-smoothing: antialiased;
-    text-shadow: #22355d 0px 0px .5px;
 }
 
 .box-bottom-left {
@@ -202,6 +201,10 @@ br.clear { display: block; clear: both; overflow: hidden; }
 
 .box-bottom-right form .form-item.size25 {
     width: 25%;
+}
+
+.box-bottom-right form .form-item.size22 {
+    width: 22%;
 }
 
 .box-bottom-right form .form-item.size2 {

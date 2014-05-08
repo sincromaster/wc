@@ -25,7 +25,7 @@ class ModelAgendaAgenda extends Model {
         km_dia,
         km_ultima_revisao,
         regiao_circulacao,
-        tipo_de_veiculo,
+        dt_ultima_revisao,
         created
       ) VALUES (
         '".utf8_encode($data['nome'])."',
@@ -48,7 +48,7 @@ class ModelAgendaAgenda extends Model {
         ".utf8_encode($data['km_dia']).",
         ".utf8_encode($data['km_ultima_revisao']).",
         '".utf8_encode($data['regiao_circulacao'])."',
-        '".utf8_encode($data['tipo_de_veiculo'])."',
+        '".utf8_encode($data['dt_ultima_revisao'])."',
         '".time()."'
       )"
     );

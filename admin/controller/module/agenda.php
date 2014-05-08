@@ -143,7 +143,7 @@ class ControllerModuleAgenda extends Controller {
         km_dia                 INT(11)    NULL,
         km_ultima_revisao      INT(11)    NULL,
         regiao_circulacao      VARCHAR(255)     NOT NULL,
-        tipo_de_veiculo        VARCHAR(255)     NOT NULL,
+        dt_ultima_revisao      INT(11),
         created         INT(11)        NOT NULL,
 
         PRIMARY KEY (agenda_id))
