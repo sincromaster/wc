@@ -137,7 +137,7 @@ class ControllerModuleAgenda extends Controller {
         placa_uf               VARCHAR(2)     NOT NULL,
         placa_cidade           VARCHAR(255)   NOT NULL,
         vencimento_cnh         INT(11)        NOT NULL,
-        renavan                INT(11)    NULL,
+        renavam                INT(11)    NULL,
         vencimento_seguro      INT(11)    NULL,
         km_atual               INT(11)    NULL,
         km_dia                 INT(11)    NULL,

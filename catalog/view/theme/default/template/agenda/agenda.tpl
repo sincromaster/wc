@@ -95,11 +95,11 @@
                             <input type="text" id="dtVenctoSEG" class="txtBox" title="Digite a data de vencimento do Seguro do seu veículo (DD/MM/AAAA)." name="vctoSeguro" placeholder="Vencto Seguro" maxlength="11" autocomplete="off" value="<?php echo $fields['vctoSeguro']; ?>">
                         </div>
                         <div class="form-item size2">
-                            <input type="text" id="txtKmAtual" class="txtBox" title="Digite a quilometragem média que o veículo anda por dia. Exemplo: Some o número de quilômetros que você gasta indo e voltando do trabalho, ou em qualquer outro percurso diário que você realize."name="kmatual" placeholder="KM Atual" maxlength="11" autocomplete="off" value="<?php echo $fields['kmatual']; ?>">
+                            <input type="text" id="txtKmAtual" class="txtBox" title="Digite a quilometragem atual do seu veículo. Este dado é encontrado no painel de seu carro."name="kmatual" placeholder="KM Atual" maxlength="11" autocomplete="off" value="<?php echo $fields['kmatual']; ?>">
                         </div>
 
                         <div class="form-item size15">
-                            <input type="text" id="txtKmDia" class="txtBox" title="Digite a quilometragem do dia em que foi realizada a última revisão no veículo. Este dado é encontrado no manual do veículo. Caso a última revisão realizada não tenha sido na concessionária, basta digitar a quilometragem da última vez em que o veículo passou por uma verificação na oficina, trocando itens como óleo e filtros." name="kmdia" placeholder="KM dia" maxlength="11" autocomplete="off" value="<?php echo $fields['kmdia']; ?>">
+                            <input type="text" id="txtKmDia" class="txtBox" title="Digite a quilometragem média que o veículo anda por dia. Exemplo: Some o número de quilômetros que você gasta indo e voltando do trabalho, ou em qualquer outro percurso diário que você realize." name="kmdia" placeholder="KM dia" maxlength="11" autocomplete="off" value="<?php echo $fields['kmdia']; ?>">
                         </div>
 
                         <div class="form-item size25">
@@ -113,21 +113,21 @@
                         <div class="form-item select size39">
                             <select type="text" class="txtBox required" name="regiao" title="Escolha a região na qual o seu veículo circula. Exemplo: Podem existir veículos com placas de outros estados que rodam em nossa área de atuação, estes veículos também serão atendidos pela WeCare Auto.">
                                 <option value="">* Região de circulação</option>
-                                <option value="sao_paulo" <?php echo $fields['regiao'] == 'sao_paulo' ? 'selected' : null; ?>>São Paulo Capital</option>
-                                <option value="barueri" <?php echo $fields['regiao'] == 'barueri' ? 'selected' : null; ?>>Barueri</option>
-                                <option value="cotia" <?php echo $fields['regiao'] == 'cotia' ? 'selected' : null; ?>>Cotia</option>
-                                <option value="diadema" <?php echo $fields['regiao'] == 'diadema' ? 'selected' : null; ?>>Diadema</option>
-                                <option value="embu_das_artes" <?php echo $fields['regiao'] == 'embu_das_artes' ? 'selected' : null; ?>>Embu das Artes</option>
-                                <option value="guarulhos" <?php echo $fields['regiao'] == 'guarulhos' ? 'selected' : null; ?>>Guarulhos</option>
-                                <option value="itapecerica_da_serra" <?php echo $fields['regiao'] == 'itapecerica_da_serra' ? 'selected' : null; ?>>Itapecerica da Serra</option>
-                                <option value="jandira" <?php echo $fields['regiao'] == 'jandira' ? 'selected' : null; ?>>Jandira</option>
-                                <option value="osasco" <?php echo $fields['regiao'] == 'osasco' ? 'selected' : null; ?>>Osasco</option>
-                                <option value="santana_de_parnaiba" <?php echo $fields['regiao'] == 'santana_de_parnaiba' ? 'selected' : null; ?>>Santana de Parnaíba</option>
-                                <option value="santo_andre" <?php echo $fields['regiao'] == 'santo_andre' ? 'selected' : null; ?>>Santo André</option>
-                                <option value="sao_bernardo_do_campo" <?php echo $fields['regiao'] == 'sao_bernardo_do_campo' ? 'selected' : null; ?>>São Bernardo do Campo</option>
-                                <option value="sao_caetano_do_sul" <?php echo $fields['regiao'] == 'sao_caetano_do_sul' ? 'selected' : null; ?>>São Caetano do Sul</option>
-                                <option value="taboao_da_serra" <?php echo $fields['regiao'] == 'taboao_da_serra' ? 'selected' : null; ?>>Taboão da Serra</option>
-                                <option value="vargem_grande_paulista" <?php echo $fields['regiao'] == 'vargem_grande_paulista' ? 'selected' : null; ?>>Vargem Grande Paulista</option>
+                                <option value="São Paulo Capital" <?php echo $fields['regiao'] == 'São Paulo Capital' ? 'selected' : null; ?>>São Paulo Capital</option>
+                                <option value="Barueri" <?php echo $fields['regiao'] == 'Barueri' ? 'selected' : null; ?>>Barueri</option>
+                                <option value="Cotia" <?php echo $fields['regiao'] == 'Cotia' ? 'selected' : null; ?>>Cotia</option>
+                                <option value="Diadema" <?php echo $fields['regiao'] == 'Diadema' ? 'selected' : null; ?>>Diadema</option>
+                                <option value="Embu das Artes" <?php echo $fields['regiao'] == 'Embu das Artes' ? 'selected' : null; ?>>Embu das Artes</option>
+                                <option value="Guarulhos" <?php echo $fields['regiao'] == 'Guarulhos' ? 'selected' : null; ?>>Guarulhos</option>
+                                <option value="Itapecerica da Serra" <?php echo $fields['regiao'] == 'Itapecerica da Serra' ? 'selected' : null; ?>>Itapecerica da Serra</option>
+                                <option value="Jandira" <?php echo $fields['regiao'] == 'Jandira' ? 'selected' : null; ?>>Jandira</option>
+                                <option value="Osasco" <?php echo $fields['regiao'] == 'Osasco' ? 'selected' : null; ?>>Osasco</option>
+                                <option value="Santana de Parnaíba" <?php echo $fields['regiao'] == 'Santana de Parnaíba' ? 'selected' : null; ?>>Santana de Parnaíba</option>
+                                <option value="Santo André" <?php echo $fields['regiao'] == 'Santo André' ? 'selected' : null; ?>>Santo André</option>
+                                <option value="São Bernardo do Campo" <?php echo $fields['regiao'] == 'São Bernardo do Campo' ? 'selected' : null; ?>>São Bernardo do Campo</option>
+                                <option value="São Caetano do Sul" <?php echo $fields['regiao'] == 'São Caetano do Sul' ? 'selected' : null; ?>>São Caetano do Sul</option>
+                                <option value="Taboão da Serra" <?php echo $fields['regiao'] == 'Taboão da Serra' ? 'selected' : null; ?>>Taboão da Serra</option>
+                                <option value="Vargem Grande Paulista" <?php echo $fields['regiao'] == 'Vargem Grande Paulista' ? 'selected' : null; ?>>Vargem Grande Paulista</option>
                             </select>
                         </div>
 

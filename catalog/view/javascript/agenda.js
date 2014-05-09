@@ -11,7 +11,11 @@ $(document).ready(function() {
         
         return isNumberKey(e);
     })
-    jQuery('#dtVenctoCNH, #dtVenctoSEG, #dtRevisao').datepicker({ dateFormat: 'dd/mm/yy' });
+    jQuery('#dtVenctoCNH, #dtVenctoSEG, #dtRevisao').datepicker({ 
+        dateFormat: 'dd/mm/yy',
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'], 
+        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    });
     
     jQuery('form').submit(function(){
         

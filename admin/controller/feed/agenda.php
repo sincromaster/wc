@@ -65,7 +65,7 @@ class ControllerFeedAgenda extends Controller {
         $this->data['form']['action'] = $this->url->link('feed/agenda/export', 'token=' . $this->session->data['token'], 'SSL');
 
         $this->data['form']['fields']['initialDate'] = strtotime('-30 days');
-        $this->data['form']['fields']['endDate'] = time();
+        $this->data['form']['fields']['endDate'] = strtotime('+1 day');
         $this->data['form']['text_initialDate'] = $this->language->get('text_initialDate');
         $this->data['form']['text_endDate'] = $this->language->get('text_endDate');
         $this->data['form']['text_submit'] = $this->language->get('text_submit');
@@ -97,12 +97,28 @@ class ControllerFeedAgenda extends Controller {
         $arrResults = $this->model_agenda_agenda->getCadastros(strtotime('+1 day', strtotime($initialDate->format('Y-m-d'))), strtotime($endDate->format('Y-m-d'))+10800);
         
         $fp = fopen('php://output', 'w');
-        fputcsv($fp, array_keys(current($arrResults)));
+        $header = array_flip(array_merge(array_keys(current($arrResults)), array('Option_Name', 'Option_Value')));
+        
+        unset($header['renavam'], $header['regiao_circulacao']);
+        
+        fputcsv($fp, array_flip($header));
         foreach($arrResults as $arrFields) {
+            
+            $arrFields['Option_Name'] = 'Renavam do veículo|Área de Circulação do Veículo';
+            $arrFields['Option_Value'] = $arrFields['renavam'] . "|" . $arrFields['regiao_circulacao'];
+            
+            unset($arrFields['renavam'], $arrFields['regiao_circulacao']);
+            
+            $arrFields = array_map('encodeToExcel', $arrFields);
             
             fputcsv($fp, $arrFields);
         }
-        
         fclose($fp);
     }
+    
+}
+
+function encodeToExcel($string) {
+    
+    return mb_convert_encoding($string, 'UTF-16LE', 'UTF-8'); 
 }

@@ -214,10 +214,10 @@ class ControllerAgendaAgenda extends Controller {
     }
 
     if(!empty($arrPost['vctoSeguro'])) { 
-        $dados['renavan'] = $arrPost['renavam'];
+        $dados['renavam'] = $arrPost['renavam'];
     } else {
         
-        $dados['renavan'] = 0;
+        $dados['renavam'] = 0;
     }
 
     //convertemos o / para - para poder montar o timestamp
