@@ -50,6 +50,11 @@ class ModelAgendaAgenda extends Model {
                         $newKey = 'Order_date_added';
                         $value = date('d/m/Y', $value);
                         break;
+                    case 'dt_ultima_revisao':
+                    case 'vencimento_seguro':
+                    case 'vencimento_cnh':
+                        $value = date('d/m/Y', $value);
+                        break;
                     default:
                         $newKey = $key;
                         break;

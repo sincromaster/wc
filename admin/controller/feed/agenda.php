@@ -101,7 +101,7 @@ class ControllerFeedAgenda extends Controller {
         
         unset($header['renavam'], $header['regiao_circulacao']);
         
-        fputcsv($fp, array_flip($header));
+        fputcsv($fp, array_flip($header), ';');
         foreach($arrResults as $arrFields) {
             
             $arrFields['Option_Name'] = 'Renavam do veículo|Área de Circulação do Veículo';
@@ -111,7 +111,7 @@ class ControllerFeedAgenda extends Controller {
             
             $arrFields = array_map('encodeToExcel', $arrFields);
             
-            fputcsv($fp, $arrFields);
+            fputcsv($fp, $arrFields, ';');
         }
         fclose($fp);
     }

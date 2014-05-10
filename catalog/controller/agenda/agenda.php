@@ -213,7 +213,7 @@ class ControllerAgendaAgenda extends Controller {
       $error['cnh'] = "Vencimento CNH obrigatório.";
     }
 
-    if(!empty($arrPost['vctoSeguro'])) { 
+    if(!empty($arrPost['renavam'])) { 
         $dados['renavam'] = $arrPost['renavam'];
     } else {
         
