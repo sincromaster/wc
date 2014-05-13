@@ -7,65 +7,8 @@ class ModelAgendaAgenda extends Model {
         $strSQL = 'SELECT * FROM ' . DB_PREFIX . 'agenda_gratis WHERE created BETWEEN ' . $initialDate . ' AND ' . $endDate;
 
         $objResult = $this->db->query($strSQL);
-        $arrReturn = array();
 
-        $i = 0;
-        foreach ($objResult->rows as $row) {
-            foreach ($row as $key => $value) {
-
-                $newKey = null;
-                switch ($key) {
-
-                    case 'nome':
-                        $newKey = 'Order_customer';
-                        break;
-                    case 'cpf':
-                        $newKey = 'Order_cpf';
-                        break;
-                    case 'cnpj':
-                        $newKey = 'Order_cnpj';
-                        break;
-                    case 'email':
-                        $newKey = 'Order_email';
-                        break;
-                    case 'ddd':
-                        $newKey = 'Order_ddd';
-                        break;
-                    case 'telefone':
-                        $newKey = 'Order_telephone';
-                        break;
-                    case 'endereco':
-                        $newKey = 'Order_shipping_address_1';
-                        break;
-                    case 'endereco_numero':
-                        $newKey = 'Order_shipping_numero';
-                        break;
-                    case 'endereco_complemento':
-                        $newKey = 'Order_shipping_complemento';
-                        break;
-                    case 'endereco_cep':
-                        $newKey = 'Order_shipping_postcode';
-                        break;
-                    case 'created':
-                        $newKey = 'Order_date_added';
-                        $value = date('d/m/Y', $value);
-                        break;
-                    case 'dt_ultima_revisao':
-                    case 'vencimento_seguro':
-                    case 'vencimento_cnh':
-                        $value = date('d/m/Y', $value);
-                        break;
-                    default:
-                        $newKey = $key;
-                        break;
-                }
-
-                $arrReturn[$i][$newKey] = $value;
-            }
-            $i++;
-        }
-
-        return $arrReturn;
+        return $objResult->rows;
     }
 
     public function getField($field_name) {
