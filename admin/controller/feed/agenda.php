@@ -94,11 +94,11 @@ class ControllerFeedAgenda extends Controller {
         $arrResults = $this->model_agenda_agenda->getCadastros(strtotime('+1 day', strtotime($initialDate->format('Y-m-d'))), strtotime($endDate->format('Y-m-d')) + 10800);
 
         $fp = fopen('php://output', 'w');
-        fputcsv($fp, array_keys($this->opencart2Dynamics()), ',');
+        fputcsv($fp, array_keys($this->opencart2Dynamics()), ';');
         
         foreach ($arrResults as $arrRow) {
 
-            fputcsv($fp, $this->opencart2Dynamics($arrRow), ',');
+            fputcsv($fp, $this->opencart2Dynamics($arrRow), ';');
         }
         fclose($fp);
     }
@@ -141,12 +141,12 @@ class ControllerFeedAgenda extends Controller {
         $arrOpencartDynamics['Order_payment_company_id'] = '';
         $arrOpencartDynamics['Order_payment_tax_id'] = '';
         $arrOpencartDynamics['Order_payment_address_1'] = 'endereco';
-        $arrOpencartDynamics['Order_payment_address_2'] = '';
+        $arrOpencartDynamics['Order_payment_address_2'] = 'placa_cidade';
         $arrOpencartDynamics['Order_payment_postcode'] = 'endereco_cep';
-        $arrOpencartDynamics['Order_payment_city'] = '';
+        $arrOpencartDynamics['Order_payment_city'] = 'placa_cidade';
         $arrOpencartDynamics['Order_payment_zone_id'] = '';
         $arrOpencartDynamics['Order_payment_zone'] = '';
-        $arrOpencartDynamics['Order_payment_zone_code'] = '';
+        $arrOpencartDynamics['Order_payment_zone_code'] = 'placa_uf';
         $arrOpencartDynamics['Order_payment_country_id'] = '';
         $arrOpencartDynamics['Order_payment_country'] = '';
         $arrOpencartDynamics['Order_payment_iso_code_2'] = '';
@@ -154,8 +154,8 @@ class ControllerFeedAgenda extends Controller {
         $arrOpencartDynamics['Order_payment_address_format'] = '';
         $arrOpencartDynamics['Order_payment_method'] = '';
         $arrOpencartDynamics['Order_payment_code'] = '';
-        $arrOpencartDynamics['Order_shipping_firstname'] = 'nome';
-        $arrOpencartDynamics['Order_shipping_lastname'] = 'nome';
+        $arrOpencartDynamics['Order_shipping_firstname'] = '';
+        $arrOpencartDynamics['Order_shipping_lastname'] = '';
         $arrOpencartDynamics['Order_shipping_company'] = '';
         $arrOpencartDynamics['Order_shipping_address_1'] = 'endereco';
         $arrOpencartDynamics['Order_shipping_address_2'] = '';
@@ -223,7 +223,6 @@ class ControllerFeedAgenda extends Controller {
             switch ($strField) {
                 case 'Order_firstname':
                 case 'Order_payment_firstname':
-                case 'Order_shipping_firstname':
 
                     $arrNome = explode(' ', $arrRow[$strValue]);
                     $arrNome = array_slice($arrNome, 0, count($arrNome)-1);
@@ -232,7 +231,6 @@ class ControllerFeedAgenda extends Controller {
 
                 case 'Order_lastname':
                 case 'Order_payment_lastname':
-                case 'Order_shipping_lastname':
 
                     $arrName = explode(' ', $arrRow[$strValue]);
                     $arrReturn[$strField] = encodeToExcel($arrName[count($arrName) - 1]);
@@ -246,6 +244,12 @@ class ControllerFeedAgenda extends Controller {
                 case 'dt_ultima_revisao':
 
                     $arrReturn[$strField] = !empty($arrRow[$strValue]) ? date('d/m/Y', $arrRow[$strValue]) : null;
+                    break;
+                
+                case 'Order_payment_postcode':
+                case 'Order_shipping_postcode':
+
+                    $arrReturn[$strField] = !empty($arrRow[$strValue]) ? substr_replace(str_pad($arrRow[$strValue], 8, '0', STR_PAD_LEFT), '-', 5, 0) : null;
                     break;
 
                 case 'Option_Name':
