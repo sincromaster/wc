@@ -1,4 +1,4 @@
-<?php
-// Text
-$_['text_title'] = 'Cartão de Crédito/Débito (LiqPay)';
+<?php
+// Text
+$_['text_title'] = 'Cartão de Crédito/Débito (LiqPay)';
 ?>

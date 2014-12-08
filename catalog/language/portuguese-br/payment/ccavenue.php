@@ -1,4 +1,4 @@
-<?php
-// Text
-$_['text_title'] = 'Cartão de Crédito/Débito (CCAvenue)';
+<?php
+// Text
+$_['text_title'] = 'Cartão de Crédito/Débito (CCAvenue)';
 ?>

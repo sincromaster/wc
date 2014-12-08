@@ -181,6 +181,7 @@ mail($recipient, $subject, $content, $email_header );
 		$mailer->AddAddress('agendeumservico@wecareauto.com.br','agende um serviço');
 		$mailer->AddAddress('thyago.kunert@wecareauto.com.br','Thyago');
 		$mailer->AddAddress('jaqueline.pereira@wecareauto.com.br','Jaqueline');
+		$mailer->AddAddress('carlos.moncau@wecareauto.com.br','Carlos');
 		$mailer->Subject = utf8_decode($subject);
 		$mailer->Body = utf8_decode($content);
 

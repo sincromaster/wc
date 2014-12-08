@@ -1,0 +1,23 @@
+; cPanel first:11.36.1.6 (update_time):1376966842 Cpanel::ZoneFile::VERSION:1.3 hostname:node01.tmdhosting940.com latest:11.36.1.6
+; Zone file for wecareauto.com.br
+$TTL 14400
+wecareauto.com.br.	86400	IN	SOA	ns1.tmdhosting940.com.	dnsadmin.node01.tmdhosting940.com.	(
+						2013082000 ;Serial Number
+						86400 ;refresh
+						7200 ;retry
+						3600000 ;expire
+						86400	)
+
+wecareauto.com.br.	86400	IN	NS	ns1.tmdhosting940.com.
+wecareauto.com.br.	86400	IN	NS	ns2.tmdhosting940.com.
+
+
+wecareauto.com.br.	14400	IN	A	184.154.77.110
+
+localhost	14400	IN	A	127.0.0.1
+
+wecareauto.com.br.	14400	IN	MX	0	wecareauto.com.br.
+
+mail	14400	IN	CNAME	wecareauto.com.br.
+www	14400	IN	CNAME	wecareauto.com.br.
+ftp	14400	IN	A	184.154.77.110

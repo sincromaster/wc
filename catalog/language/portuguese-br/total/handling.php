@@ -1,3 +1,3 @@
-<?php
-$_['text_handling'] = 'Taxa de manuseio';
+<?php
+$_['text_handling'] = 'Taxa de manuseio';
 ?>

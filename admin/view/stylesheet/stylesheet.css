@@ -558,3 +558,19 @@ table.form > tbody > tr > td {
 	position: relative;
 	top: 3px;
 }
+
+#form-agenda-texts label {
+    background: #dcdcdc;
+    display: block;
+    padding: 5px;
+    color: #000;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top: 1px solid #9f9f9f;
+    border-left: 1px solid #9f9f9f;
+    border-right: 1px solid #9f9f9f;
+    font-size: 14px;
+    font-family: Verdana;
+    font-weight: bold;
+}
+#form-agenda-texts .form-item { margin: 0 0 20px 0;}

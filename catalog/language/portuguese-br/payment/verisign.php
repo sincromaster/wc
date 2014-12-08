@@ -1,4 +1,4 @@
-<?php
-// Text
-$_['text_title'] = 'Cartão de Crédito/Débito (VeriSign)';
+<?php
+// Text
+$_['text_title'] = 'Cartão de Crédito/Débito (VeriSign)';
 ?>

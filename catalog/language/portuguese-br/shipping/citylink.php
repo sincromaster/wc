@@ -1,5 +1,5 @@
-<?php
-// Text
-$_['text_title']  = 'Citylink';
-$_['text_weight'] = 'Peso:';
+<?php
+// Text
+$_['text_title']  = 'Citylink';
+$_['text_weight'] = 'Peso:';
 ?>

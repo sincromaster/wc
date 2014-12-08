@@ -1,4 +1,4 @@
-html {
+shtml {
 	overflow-y: scroll;
 	margin: 0;
 	padding: 0;
@@ -299,7 +299,7 @@ label {
 }
 #header #welcome a{font:11px Verdana, Geneva, sans-serif;}
 
-.telTop{background: url('../image/ico-telefone.gif') 0 0 no-repeat; color:#273D6D; font:600 16px 'Titillium Web', sans-serif; padding-left:24px; margin:0 0 0 94px; line-height:1;}
+.telTop{background: url('../image/ico-telefone.gif') 0 0 no-repeat; color:#273D6D; font:600 16px 'Titillium Web', sans-serif; padding-left:24px; margin:0 0 0 75px; line-height:1;}
 
 #header .links {
 	position: absolute;
@@ -375,7 +375,8 @@ label {
 	height:36px;
 	padding-top:17px;
 }
-#menu > ul > li:hover > a {
+#menu > ul > li:hover > a,
+#menu > ul > li:last-child > a {
 	background: #273D6D;
 	color:#F3F1D4;
 	/*-webkit-border-radius: 5px;

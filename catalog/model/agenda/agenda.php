@@ -3,8 +3,7 @@
 class ModelAgendaAgenda extends Model {
 
   public function saveAgenda($data) {
-    
-    $result = $this->db->query("INSERT INTO oc_agenda_gratis
+       $result = $this->db->query("INSERT INTO " . DB_PREFIX . "agenda_gratis
       (
         nome,
         cpf,
@@ -20,42 +19,56 @@ class ModelAgendaAgenda extends Model {
         placa_uf,
         placa_cidade,
         vencimento_cnh,
-        renavan,
+        renavam,
         vencimento_seguro,
         km_atual,
         km_dia,
         km_ultima_revisao,
         regiao_circulacao,
-        tipo_de_veiculo     
+        dt_ultima_revisao,
+        created
       ) VALUES (
-        '".$data['nome']."',
-        ".$data['cpf'].",
-        ".$data['cnpj'].",
-        '".$data['email']."',
-        ".$data['ddd'].",
-        ".$data['telefone'].",
-        '".$data['endereco']."',
-        '".$data['endereco_numero']."',
-        '".$data['endereco_complemento']."',
-        ".$data['endereco_cep'].",
-        '".$data['placa']."',
-        '".$data['placa_uf']."',
-        '".$data['placa_cidade']."',
-        ".$data['vencimento_cnh'].",
-        ".$data['renavan'].",
-        ".$data['vencimento_seguro'].",
-        ".$data['km_atual'].",
-        ".$data['km_dia'].",
-        ".$data['km_ultima_revisao'].",
-        '".$data['regiao_circulacao']."',
-        '".$data['tipo_de_veiculo']."'
+        '".mysql_escape_string(utf8_encode($data['nome']))."',
+        ".mysql_escape_string($data['cpf']).",
+        ".mysql_escape_string($data['cnpj']).",
+        '".mysql_escape_string(utf8_encode($data['email']))."',
+        ".mysql_escape_string($data['ddd']).",
+        ".mysql_escape_string($data['telefone']).",
+        '".mysql_escape_string(utf8_encode($data['endereco']))."',
+        '".mysql_escape_string($data['endereco_numero'])."',
+        '".mysql_escape_string(utf8_encode($data['endereco_complemento']))."',
+        ".mysql_escape_string($data['endereco_cep']).",
+        '".mysql_escape_string($data['placa'])."',
+        '".mysql_escape_string(utf8_encode($data['placa_uf']))."',
+        '".mysql_escape_string(utf8_encode($data['placa_cidade']))."',
+        ".mysql_escape_string($data['vencimento_cnh']).",
+        ".mysql_escape_string($data['renavam']).",
+        ".mysql_escape_string($data['vencimento_seguro']).",
+        ".mysql_escape_string($data['km_atual']).",
+        ".mysql_escape_string($data['km_dia']).",
+        ".mysql_escape_string($data['km_ultima_revisao']).",
+        '".mysql_escape_string($data['regiao_circulacao'])."',
+        '".mysql_escape_string($data['dt_ultima_revisao'])."',
+        '".time()."'
       )"
     );
+    
+    $_SESSION['success'] = 'Cadastro realizado com sucesso.';
     
     return $result;
   }
   
-  
+  public function getTexts() {
+      
+      $strSQL = 'SELECT ' . DB_PREFIX . 'setting.key, ' . DB_PREFIX . 'setting.value FROM ' . DB_PREFIX . 'setting WHERE ' . DB_PREFIX . 'setting.key IN("agenda_campo_cabecalho", "agenda_campo_rodape")';
 
+      $arrReturn = array();
+      
+      foreach($this->db->query($strSQL)->rows as $row) {
+          $arrReturn[$row['key']] = $row['value'];
+      }
+      
+      return $arrReturn;
+  }
 }
 ?>

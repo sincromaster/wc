@@ -14,7 +14,7 @@ if (!defined('DIR_APPLICATION')) {
 }
 
 // VirtualQMOD
-require_once(getcwd().'/vqmod/vqmod.php');
+require_once('./vqmod/vqmod.php');
 $vqmod = new VQMod();
 
 // VQMODDED Startup
@@ -204,7 +204,7 @@ if (isset($request->get['tracking'])) {
 $registry->set('currency', new Currency($registry));
 
 // Device
-//$registry->set('device', new Device($registry));
+$registry->set('device', new Device($registry));
 
 // Tax
 $registry->set('tax', new Tax($registry));
@@ -240,13 +240,6 @@ if (isset($request->get['route'])) {
 } else {
 	$action = new Action('common/home');
 }
-
-////Tratamento feito para aplicar desconto para revenda.
-//if ( isset( $request->get['revenda'] ) ) {
-//  exit('revenda');
-//  var_dump($request->get['revenda']);exit;
-//}
-
 
 // Dispatch
 $controller->dispatch($action, new Action('error/not_found'));
